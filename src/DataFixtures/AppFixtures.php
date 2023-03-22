@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Domain;
+use App\Entity\Lift;
 use App\Entity\Station;
 use App\Entity\Track;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -30,6 +31,17 @@ class AppFixtures extends Fixture
             $station->setName('Station n' . $i);
             $station->setDomain($domains[random_int(0, count($domains) - 1)]);
             $manager->persist($station);
+        }
+        $manager->flush();
+
+        $liftRepository = $manager->getRepository(Lift::class);
+        $lifts = $liftRepository->findAll();
+
+        for($i = 1; $i <= 200; $i++) {
+            $lift = new Lift();
+            $lift->setOpening(new \DateTime('8:00:00'));
+            $lift->setClosing(new \DateTime('17:00:00'));
+            $manager->persist($lift);
         }
         $manager->flush();
     }
