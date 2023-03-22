@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\TracksRepository;
+use App\Repository\LiftRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: TracksRepository::class)]
-class Tracks
+#[ORM\Entity(repositoryClass: LiftRepository::class)]
+class Lift
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,18 +18,12 @@ class Tracks
     private ?\DateTimeInterface $opening = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $closure = null;
+    private ?\DateTimeInterface $closing = null;
 
-    #[ORM\ManyToOne(inversedBy: 'tracks')]
-    private ?TrackDiffuclty $difficulty = null;
+    #[ORM\ManyToOne(inversedBy: 'lifts')]
+    private ?Type $type = null;
 
-    #[ORM\ManyToOne(inversedBy: 'tracks')]
-    private ?Level $level = null;
-
-    #[ORM\ManyToOne(inversedBy: 'tracks')]
-    private ?Material $material = null;
-
-    #[ORM\ManyToOne(inversedBy: 'tracks')]
+    #[ORM\ManyToOne(inversedBy: 'lifts')]
     private ?Clutter $clutter = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -38,9 +32,8 @@ class Tracks
     #[ORM\Column(nullable: true)]
     private ?bool $forcedClosure = null;
 
-    #[ORM\ManyToOne(inversedBy: 'tracks')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Domain $domain = null;
+    #[ORM\ManyToOne(inversedBy: 'lifts')]
+    private ?Station $station = null;
 
     public function getId(): ?int
     {
@@ -59,50 +52,26 @@ class Tracks
         return $this;
     }
 
-    public function getClosure(): ?\DateTimeInterface
+    public function getClosing(): ?\DateTimeInterface
     {
-        return $this->closure;
+        return $this->closing;
     }
 
-    public function setClosure(\DateTimeInterface $closure): self
+    public function setClosing(\DateTimeInterface $closing): self
     {
-        $this->closure = $closure;
+        $this->closing = $closing;
 
         return $this;
     }
 
-    public function getDifficulty(): ?TrackDiffuclty
+    public function getType(): ?Type
     {
-        return $this->difficulty;
+        return $this->type;
     }
 
-    public function setDifficulty(?TrackDiffuclty $difficulty): self
+    public function setType(?Type $type): self
     {
-        $this->difficulty = $difficulty;
-
-        return $this;
-    }
-
-    public function getLevel(): ?Level
-    {
-        return $this->level;
-    }
-
-    public function setLevel(?Level $level): self
-    {
-        $this->level = $level;
-
-        return $this;
-    }
-
-    public function getMaterial(): ?Material
-    {
-        return $this->material;
-    }
-
-    public function setMaterial(?Material $material): self
-    {
-        $this->material = $material;
+        $this->type = $type;
 
         return $this;
     }
@@ -143,14 +112,14 @@ class Tracks
         return $this;
     }
 
-    public function getDomain(): ?Domain
+    public function getStation(): ?Station
     {
-        return $this->domain;
+        return $this->station;
     }
 
-    public function setDomain(?Domain $domain): self
+    public function setStation(?Station $station): self
     {
-        $this->domain = $domain;
+        $this->station = $station;
 
         return $this;
     }

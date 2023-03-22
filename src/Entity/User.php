@@ -3,47 +3,36 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $name = null;
-
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
-    #[ORM\ManyToOne(inversedBy: 'users')]
-    private ?Domain $domain = null;
+    #[ORM\Column]
+    private array $roles = [];
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $description = null;
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
+    private ?string $password = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $logo = null;
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Station $station = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getEmail(): ?string
@@ -58,38 +47,67 @@ class User
         return $this;
     }
 
-    public function getDomain(): ?Domain
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
     {
-        return $this->domain;
+        return (string) $this->email;
     }
 
-    public function setDomain(?Domain $domain): self
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        $this->domain = $domain;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }
 
-    public function getDescription(): ?string
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
     {
-        return $this->description;
+        return $this->password;
     }
 
-    public function setDescription(?string $description): self
+    public function setPassword(string $password): self
     {
-        $this->description = $description;
+        $this->password = $password;
 
         return $this;
     }
 
-    public function getLogo(): ?string
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
     {
-        return $this->logo;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
-    public function setLogo(?string $logo): self
+    public function getStation(): ?Station
     {
-        $this->logo = $logo;
+        return $this->station;
+    }
+
+    public function setStation(?Station $station): self
+    {
+        $this->station = $station;
 
         return $this;
     }

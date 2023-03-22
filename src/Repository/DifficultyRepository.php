@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Domains;
+use App\Entity\Difficulty;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Domains>
+ * @extends ServiceEntityRepository<Difficulty>
  *
- * @method Domains|null find($id, $lockMode = null, $lockVersion = null)
- * @method Domains|null findOneBy(array $criteria, array $orderBy = null)
- * @method Domains[]    findAll()
- * @method Domains[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Difficulty|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Difficulty|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Difficulty[]    findAll()
+ * @method Difficulty[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class DomainsRepository extends ServiceEntityRepository
+class DifficultyRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Domains::class);
+        parent::__construct($registry, Difficulty::class);
     }
 
-    public function save(Domains $entity, bool $flush = false): void
+    public function save(Difficulty $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class DomainsRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Domains $entity, bool $flush = false): void
+    public function remove(Difficulty $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class DomainsRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Domains[] Returns an array of Domains objects
+//     * @return Difficulty[] Returns an array of Difficulty objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class DomainsRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Domains
+//    public function findOneBySomeField($value): ?Difficulty
 //    {
 //        return $this->createQueryBuilder('d')
 //            ->andWhere('d.exampleField = :val')

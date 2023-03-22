@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Tracks;
+use App\Entity\Type;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Tracks>
+ * @extends ServiceEntityRepository<Type>
  *
- * @method Tracks|null find($id, $lockMode = null, $lockVersion = null)
- * @method Tracks|null findOneBy(array $criteria, array $orderBy = null)
- * @method Tracks[]    findAll()
- * @method Tracks[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Type|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Type|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Type[]    findAll()
+ * @method Type[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TracksRepository extends ServiceEntityRepository
+class TypeRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Tracks::class);
+        parent::__construct($registry, Type::class);
     }
 
-    public function save(Tracks $entity, bool $flush = false): void
+    public function save(Type $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class TracksRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Tracks $entity, bool $flush = false): void
+    public function remove(Type $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class TracksRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Tracks[] Returns an array of Tracks objects
+//     * @return Type[] Returns an array of Type objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class TracksRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Tracks
+//    public function findOneBySomeField($value): ?Type
 //    {
 //        return $this->createQueryBuilder('t')
 //            ->andWhere('t.exampleField = :val')

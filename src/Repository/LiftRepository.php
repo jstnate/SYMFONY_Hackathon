@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\LiftType;
+use App\Entity\Lift;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<LiftType>
+ * @extends ServiceEntityRepository<Lift>
  *
- * @method LiftType|null find($id, $lockMode = null, $lockVersion = null)
- * @method LiftType|null findOneBy(array $criteria, array $orderBy = null)
- * @method LiftType[]    findAll()
- * @method LiftType[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Lift|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Lift|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Lift[]    findAll()
+ * @method Lift[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class LiftTypeRepository extends ServiceEntityRepository
+class LiftRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, LiftType::class);
+        parent::__construct($registry, Lift::class);
     }
 
-    public function save(LiftType $entity, bool $flush = false): void
+    public function save(Lift $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class LiftTypeRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(LiftType $entity, bool $flush = false): void
+    public function remove(Lift $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class LiftTypeRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return LiftType[] Returns an array of LiftType objects
+//     * @return Lift[] Returns an array of Lift objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class LiftTypeRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?LiftType
+//    public function findOneBySomeField($value): ?Lift
 //    {
 //        return $this->createQueryBuilder('l')
 //            ->andWhere('l.exampleField = :val')

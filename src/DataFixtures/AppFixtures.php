@@ -2,10 +2,13 @@
 
 namespace App\DataFixtures;
 
+<<<<<<< HEAD
 use App\Entity\Domain;
 use App\Entity\TrackDiffuclty;
 use App\Entity\Tracks;
 use DateTime;
+=======
+>>>>>>> dev
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -16,6 +19,7 @@ class AppFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
 
+<<<<<<< HEAD
 
         $difficulties = ['easy', 'medium', 'hard', 'very hard'];
         foreach ($difficulties as $difficulty) {
@@ -49,6 +53,8 @@ class AppFixtures extends Fixture
             $track->setDomain($domains[random_int(0, count($domains) - 1)]);
             $manager->persist($track);
         }
+=======
+>>>>>>> dev
         $manager->flush();
     }
 }
