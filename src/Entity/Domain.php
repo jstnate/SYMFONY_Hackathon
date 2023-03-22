@@ -30,12 +30,9 @@ class Domain
 
     public function __construct()
     {
-<<<<<<< HEAD
         $this->users = new ArrayCollection();
         $this->tracks = new ArrayCollection();
-=======
         $this->stations = new ArrayCollection();
->>>>>>> dev
     }
 
     public function getId(): ?int

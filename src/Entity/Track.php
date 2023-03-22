@@ -39,12 +39,7 @@ class Track
     private ?bool $forcedClosure = null;
 
     #[ORM\ManyToOne(inversedBy: 'tracks')]
-<<<<<<< HEAD:src/Entity/Tracks.php
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Domain $domain = null;
-=======
     private ?Station $station = null;
->>>>>>> dev:src/Entity/Track.php
 
     public function getId(): ?int
     {
@@ -147,16 +142,6 @@ class Track
         return $this;
     }
 
-<<<<<<< HEAD:src/Entity/Tracks.php
-    public function getDomain(): ?Domain
-    {
-        return $this->domain;
-    }
-
-    public function setDomain(?Domain $domain): self
-    {
-        $this->domain = $domain;
-=======
     public function getStation(): ?Station
     {
         return $this->station;
@@ -165,7 +150,6 @@ class Track
     public function setStation(?Station $station): self
     {
         $this->station = $station;
->>>>>>> dev:src/Entity/Track.php
 
         return $this;
     }
