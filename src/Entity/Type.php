@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\TrackDiffucltyRepository;
+use App\Repository\TypeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: TrackDiffucltyRepository::class)]
-class TrackDiffuclty
+#[ORM\Entity(repositoryClass: TypeRepository::class)]
+class Type
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,12 +18,12 @@ class TrackDiffuclty
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\OneToMany(mappedBy: 'difficulty', targetEntity: Tracks::class)]
-    private Collection $tracks;
+    #[ORM\OneToMany(mappedBy: 'type', targetEntity: Lift::class)]
+    private Collection $lifts;
 
     public function __construct()
     {
-        $this->tracks = new ArrayCollection();
+        $this->lifts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -44,29 +44,29 @@ class TrackDiffuclty
     }
 
     /**
-     * @return Collection<int, Tracks>
+     * @return Collection<int, Lift>
      */
-    public function getTracks(): Collection
+    public function getLifts(): Collection
     {
-        return $this->tracks;
+        return $this->lifts;
     }
 
-    public function addTrack(Tracks $track): self
+    public function addLift(Lift $lift): self
     {
-        if (!$this->tracks->contains($track)) {
-            $this->tracks->add($track);
-            $track->setDifficulty($this);
+        if (!$this->lifts->contains($lift)) {
+            $this->lifts->add($lift);
+            $lift->setType($this);
         }
 
         return $this;
     }
 
-    public function removeTrack(Tracks $track): self
+    public function removeLift(Lift $lift): self
     {
-        if ($this->tracks->removeElement($track)) {
+        if ($this->lifts->removeElement($lift)) {
             // set the owning side to null (unless already changed)
-            if ($track->getDifficulty() === $this) {
-                $track->setDifficulty(null);
+            if ($lift->getType() === $this) {
+                $lift->setType(null);
             }
         }
 

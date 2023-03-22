@@ -17,20 +17,17 @@ class Domain
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
     private ?string $logo = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\OneToMany(mappedBy: 'domain', targetEntity: User::class)]
-    private Collection $users;
+    #[ORM\OneToMany(mappedBy: 'domain', targetEntity: Station::class)]
+    private Collection $stations;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->stations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -38,24 +35,12 @@ class Domain
         return $this->id;
     }
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
     public function getLogo(): ?string
     {
         return $this->logo;
     }
 
-    public function setLogo(?string $logo): self
+    public function setLogo(string $logo): self
     {
         $this->logo = $logo;
 
@@ -75,29 +60,29 @@ class Domain
     }
 
     /**
-     * @return Collection<int, User>
+     * @return Collection<int, Station>
      */
-    public function getUsers(): Collection
+    public function getStations(): Collection
     {
-        return $this->users;
+        return $this->stations;
     }
 
-    public function addUser(User $user): self
+    public function addStation(Station $station): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users->add($user);
-            $user->setDomain($this);
+        if (!$this->stations->contains($station)) {
+            $this->stations->add($station);
+            $station->setDomain($this);
         }
 
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function removeStation(Station $station): self
     {
-        if ($this->users->removeElement($user)) {
+        if ($this->stations->removeElement($station)) {
             // set the owning side to null (unless already changed)
-            if ($user->getDomain() === $this) {
-                $user->setDomain(null);
+            if ($station->getDomain() === $this) {
+                $station->setDomain(null);
             }
         }
 

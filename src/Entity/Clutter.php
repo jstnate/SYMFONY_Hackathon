@@ -18,16 +18,16 @@ class Clutter
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\OneToMany(mappedBy: 'clutter', targetEntity: Tracks::class)]
-    private Collection $tracks;
-
-    #[ORM\OneToMany(mappedBy: 'clutter', targetEntity: Lifts::class)]
+    #[ORM\OneToMany(mappedBy: 'clutter', targetEntity: Lift::class)]
     private Collection $lifts;
+
+    #[ORM\OneToMany(mappedBy: 'clutter', targetEntity: Track::class)]
+    private Collection $tracks;
 
     public function __construct()
     {
-        $this->tracks = new ArrayCollection();
         $this->lifts = new ArrayCollection();
+        $this->tracks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -48,44 +48,14 @@ class Clutter
     }
 
     /**
-     * @return Collection<int, Tracks>
-     */
-    public function getTracks(): Collection
-    {
-        return $this->tracks;
-    }
-
-    public function addTrack(Tracks $track): self
-    {
-        if (!$this->tracks->contains($track)) {
-            $this->tracks->add($track);
-            $track->setClutter($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTrack(Tracks $track): self
-    {
-        if ($this->tracks->removeElement($track)) {
-            // set the owning side to null (unless already changed)
-            if ($track->getClutter() === $this) {
-                $track->setClutter(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Lifts>
+     * @return Collection<int, Lift>
      */
     public function getLifts(): Collection
     {
         return $this->lifts;
     }
 
-    public function addLift(Lifts $lift): self
+    public function addLift(Lift $lift): self
     {
         if (!$this->lifts->contains($lift)) {
             $this->lifts->add($lift);
@@ -95,12 +65,42 @@ class Clutter
         return $this;
     }
 
-    public function removeLift(Lifts $lift): self
+    public function removeLift(Lift $lift): self
     {
         if ($this->lifts->removeElement($lift)) {
             // set the owning side to null (unless already changed)
             if ($lift->getClutter() === $this) {
                 $lift->setClutter(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Track>
+     */
+    public function getTracks(): Collection
+    {
+        return $this->tracks;
+    }
+
+    public function addTrack(Track $track): self
+    {
+        if (!$this->tracks->contains($track)) {
+            $this->tracks->add($track);
+            $track->setClutter($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTrack(Track $track): self
+    {
+        if ($this->tracks->removeElement($track)) {
+            // set the owning side to null (unless already changed)
+            if ($track->getClutter() === $this) {
+                $track->setClutter(null);
             }
         }
 

@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\LiftTypeRepository;
+use App\Repository\DifficultyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: LiftTypeRepository::class)]
-class LiftType
+#[ORM\Entity(repositoryClass: DifficultyRepository::class)]
+class Difficulty
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,12 +18,12 @@ class LiftType
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\OneToMany(mappedBy: 'type', targetEntity: Lifts::class)]
-    private Collection $lifts;
+    #[ORM\OneToMany(mappedBy: 'difficulty', targetEntity: Track::class)]
+    private Collection $tracks;
 
     public function __construct()
     {
-        $this->lifts = new ArrayCollection();
+        $this->tracks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -44,29 +44,29 @@ class LiftType
     }
 
     /**
-     * @return Collection<int, Lifts>
+     * @return Collection<int, Track>
      */
-    public function getLifts(): Collection
+    public function getTracks(): Collection
     {
-        return $this->lifts;
+        return $this->tracks;
     }
 
-    public function addLift(Lifts $lift): self
+    public function addTrack(Track $track): self
     {
-        if (!$this->lifts->contains($lift)) {
-            $this->lifts->add($lift);
-            $lift->setType($this);
+        if (!$this->tracks->contains($track)) {
+            $this->tracks->add($track);
+            $track->setDifficulty($this);
         }
 
         return $this;
     }
 
-    public function removeLift(Lifts $lift): self
+    public function removeTrack(Track $track): self
     {
-        if ($this->lifts->removeElement($lift)) {
+        if ($this->tracks->removeElement($track)) {
             // set the owning side to null (unless already changed)
-            if ($lift->getType() === $this) {
-                $lift->setType(null);
+            if ($track->getDifficulty() === $this) {
+                $track->setDifficulty(null);
             }
         }
 

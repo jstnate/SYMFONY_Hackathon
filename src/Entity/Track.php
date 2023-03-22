@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\LiftsRepository;
+use App\Repository\TrackRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: LiftsRepository::class)]
-class Lifts
+#[ORM\Entity(repositoryClass: TrackRepository::class)]
+class Track
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -20,10 +20,16 @@ class Lifts
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTimeInterface $closing = null;
 
-    #[ORM\ManyToOne(inversedBy: 'lifts')]
-    private ?LiftType $type = null;
+    #[ORM\ManyToOne(inversedBy: 'tracks')]
+    private ?Difficulty $difficulty = null;
 
-    #[ORM\ManyToOne(inversedBy: 'lifts')]
+    #[ORM\ManyToOne(inversedBy: 'tracks')]
+    private ?Level $level = null;
+
+    #[ORM\ManyToOne(inversedBy: 'tracks')]
+    private ?Material $material = null;
+
+    #[ORM\ManyToOne(inversedBy: 'tracks')]
     private ?Clutter $clutter = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -31,6 +37,9 @@ class Lifts
 
     #[ORM\Column(nullable: true)]
     private ?bool $forcedClosure = null;
+
+    #[ORM\ManyToOne(inversedBy: 'tracks')]
+    private ?Station $station = null;
 
     public function getId(): ?int
     {
@@ -61,14 +70,38 @@ class Lifts
         return $this;
     }
 
-    public function getType(): ?LiftType
+    public function getDifficulty(): ?Difficulty
     {
-        return $this->type;
+        return $this->difficulty;
     }
 
-    public function setType(?LiftType $type): self
+    public function setDifficulty(?Difficulty $difficulty): self
     {
-        $this->type = $type;
+        $this->difficulty = $difficulty;
+
+        return $this;
+    }
+
+    public function getLevel(): ?Level
+    {
+        return $this->level;
+    }
+
+    public function setLevel(?Level $level): self
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    public function getMaterial(): ?Material
+    {
+        return $this->material;
+    }
+
+    public function setMaterial(?Material $material): self
+    {
+        $this->material = $material;
 
         return $this;
     }
@@ -90,7 +123,7 @@ class Lifts
         return $this->message;
     }
 
-    public function setMessage(string $message): self
+    public function setMessage(?string $message): self
     {
         $this->message = $message;
 
@@ -105,6 +138,18 @@ class Lifts
     public function setForcedClosure(?bool $forcedClosure): self
     {
         $this->forcedClosure = $forcedClosure;
+
+        return $this;
+    }
+
+    public function getStation(): ?Station
+    {
+        return $this->station;
+    }
+
+    public function setStation(?Station $station): self
+    {
+        $this->station = $station;
 
         return $this;
     }

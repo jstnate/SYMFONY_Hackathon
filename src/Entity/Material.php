@@ -18,7 +18,7 @@ class Material
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\OneToMany(mappedBy: 'material', targetEntity: Tracks::class)]
+    #[ORM\OneToMany(mappedBy: 'material', targetEntity: Track::class)]
     private Collection $tracks;
 
     public function __construct()
@@ -44,14 +44,14 @@ class Material
     }
 
     /**
-     * @return Collection<int, Tracks>
+     * @return Collection<int, Track>
      */
     public function getTracks(): Collection
     {
         return $this->tracks;
     }
 
-    public function addTrack(Tracks $track): self
+    public function addTrack(Track $track): self
     {
         if (!$this->tracks->contains($track)) {
             $this->tracks->add($track);
@@ -61,7 +61,7 @@ class Material
         return $this;
     }
 
-    public function removeTrack(Tracks $track): self
+    public function removeTrack(Track $track): self
     {
         if ($this->tracks->removeElement($track)) {
             // set the owning side to null (unless already changed)

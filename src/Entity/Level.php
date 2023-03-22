@@ -16,9 +16,9 @@ class Level
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private ?string $title = null;
 
-    #[ORM\OneToMany(mappedBy: 'level', targetEntity: Tracks::class)]
+    #[ORM\OneToMany(mappedBy: 'level', targetEntity: Track::class)]
     private Collection $tracks;
 
     public function __construct()
@@ -31,27 +31,27 @@ class Level
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getTitle(): ?string
     {
-        return $this->name;
+        return $this->title;
     }
 
-    public function setName(string $name): self
+    public function setTitle(string $title): self
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Tracks>
+     * @return Collection<int, Track>
      */
     public function getTracks(): Collection
     {
         return $this->tracks;
     }
 
-    public function addTrack(Tracks $track): self
+    public function addTrack(Track $track): self
     {
         if (!$this->tracks->contains($track)) {
             $this->tracks->add($track);
@@ -61,7 +61,7 @@ class Level
         return $this;
     }
 
-    public function removeTrack(Tracks $track): self
+    public function removeTrack(Track $track): self
     {
         if ($this->tracks->removeElement($track)) {
             // set the owning side to null (unless already changed)

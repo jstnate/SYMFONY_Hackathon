@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\TrackDiffuclty;
+use App\Entity\Track;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<TrackDiffuclty>
+ * @extends ServiceEntityRepository<Track>
  *
- * @method TrackDiffuclty|null find($id, $lockMode = null, $lockVersion = null)
- * @method TrackDiffuclty|null findOneBy(array $criteria, array $orderBy = null)
- * @method TrackDiffuclty[]    findAll()
- * @method TrackDiffuclty[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Track|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Track|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Track[]    findAll()
+ * @method Track[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TrackDiffucltyRepository extends ServiceEntityRepository
+class TrackRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, TrackDiffuclty::class);
+        parent::__construct($registry, Track::class);
     }
 
-    public function save(TrackDiffuclty $entity, bool $flush = false): void
+    public function save(Track $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class TrackDiffucltyRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(TrackDiffuclty $entity, bool $flush = false): void
+    public function remove(Track $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class TrackDiffucltyRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return TrackDiffuclty[] Returns an array of TrackDiffuclty objects
+//     * @return Track[] Returns an array of Track objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class TrackDiffucltyRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?TrackDiffuclty
+//    public function findOneBySomeField($value): ?Track
 //    {
 //        return $this->createQueryBuilder('t')
 //            ->andWhere('t.exampleField = :val')
