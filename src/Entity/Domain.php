@@ -16,7 +16,7 @@ class Domain
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $logo = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -24,6 +24,9 @@ class Domain
 
     #[ORM\OneToMany(mappedBy: 'domain', targetEntity: Station::class)]
     private Collection $stations;
+
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
 
     public function __construct()
     {
@@ -85,6 +88,18 @@ class Domain
                 $station->setDomain(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
