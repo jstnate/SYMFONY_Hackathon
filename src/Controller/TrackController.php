@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\TrackRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +22,15 @@ class TrackController extends AbstractController
     {
         return $this->render('track/index.html.twig', [
             'controller_name' => 'TrackController',
-            'user' => $this->security->getUser()->get
+            'user' => $this->security->getUser()
+        ]);
+    }
+
+    #[Route('/track/{id}', name: 'app_track')]
+    public function show(int $id, TrackRepository $trackRepository): Response
+    {
+        return $this->render('track/show.html.twig', [
+            'track' => $trackRepository->find($id)
         ]);
     }
 }

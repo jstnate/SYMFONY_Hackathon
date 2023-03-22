@@ -34,6 +34,17 @@ class AppFixtures extends Fixture
         }
         $manager->flush();
 
+        $stationRepository = $manager->getRepository(Station::class);
+        $stations = $stationRepository->findAll();
+
+        for($i = 1; $i <= 200; $i++) {
+            $track = new Track();
+            $track->setStation($stations[random_int(0, count($stations) - 1)]);
+            $track->setOpening(new \DateTime('8:00:00'));
+            $track->setClosing(new \DateTime('17:00:00'));
+            $manager->persist($track);
+        }
+
         $liftRepository = $manager->getRepository(Lift::class);
         $lifts = $liftRepository->findAll();
 

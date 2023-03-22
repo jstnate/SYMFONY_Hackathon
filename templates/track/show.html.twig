@@ -9,16 +9,9 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-{#    <p>{{ user }}</p>#}
+    <h1>Track {{ track.id }}</h1>
 
 
-    <ul>
-        {% for track in user.station.tracks %}
-            <li>
-                <a href="/track/{{ track.id }}">ff</a>
-            </li>
-        {% endfor %}
-    </ul>
+
 </div>
 {% endblock %}
