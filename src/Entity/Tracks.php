@@ -38,6 +38,10 @@ class Tracks
     #[ORM\Column(nullable: true)]
     private ?bool $forcedClosure = null;
 
+    #[ORM\ManyToOne(inversedBy: 'tracks')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Domain $domain = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -135,6 +139,18 @@ class Tracks
     public function setForcedClosure(?bool $forcedClosure): self
     {
         $this->forcedClosure = $forcedClosure;
+
+        return $this;
+    }
+
+    public function getDomain(): ?Domain
+    {
+        return $this->domain;
+    }
+
+    public function setDomain(?Domain $domain): self
+    {
+        $this->domain = $domain;
 
         return $this;
     }

@@ -28,9 +28,13 @@ class Domain
     #[ORM\OneToMany(mappedBy: 'domain', targetEntity: User::class)]
     private Collection $users;
 
+    #[ORM\OneToMany(mappedBy: 'domain', targetEntity: Tracks::class)]
+    private Collection $tracks;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->tracks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -98,6 +102,36 @@ class Domain
             // set the owning side to null (unless already changed)
             if ($user->getDomain() === $this) {
                 $user->setDomain(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Tracks>
+     */
+    public function getTracks(): Collection
+    {
+        return $this->tracks;
+    }
+
+    public function addTrack(Tracks $track): self
+    {
+        if (!$this->tracks->contains($track)) {
+            $this->tracks->add($track);
+            $track->setDomain($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTrack(Tracks $track): self
+    {
+        if ($this->tracks->removeElement($track)) {
+            // set the owning side to null (unless already changed)
+            if ($track->getDomain() === $this) {
+                $track->setDomain(null);
             }
         }
 
