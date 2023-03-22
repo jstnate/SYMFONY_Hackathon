@@ -44,8 +44,8 @@ class AppFixtures extends Fixture
             $track->setDifficulty($trackDifficulties[random_int(0, count($trackDifficulties) - 1)]);
             $date = new DateTime();
             $track->setOpening($date);
-            $track->setClosure($date);
-            $track->setDomain($domains[random_int(0, count($domains) - 1)]);
+//            $track->setClosure($date);
+//            $track->setDomain($domains[random_int(0, count($domains) - 1)]);
             $manager->persist($track);
         }
         $manager->flush();
