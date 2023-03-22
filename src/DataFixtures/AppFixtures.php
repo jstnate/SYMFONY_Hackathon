@@ -73,7 +73,7 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i < 70; $i++) {
             $station = new Station();
-            $station->setName('Station n°' . $i);
+            $station->setName('Station' . $i);
             $station->setDomain($domains[random_int(0, count($domains) - 1)]);
             $manager->persist($station);
         }
