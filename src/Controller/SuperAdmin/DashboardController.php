@@ -2,7 +2,12 @@
 
 namespace App\Controller\SuperAdmin;
 
+use App\Entity\Clutter;
+use App\Entity\Difficulty;
 use App\Entity\Domain;
+use App\Entity\Level;
+use App\Entity\Material;
+use App\Entity\Type;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -34,5 +39,10 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Domains', 'fas fa-list', Domain::class);
+        yield MenuItem::linkToCrud('Lifts Type', 'fas fa-list', Type::class);
+        yield MenuItem::linkToCrud('Tracks Difficulties', 'fas fa-list', Difficulty::class);
+        yield MenuItem::linkToCrud('Level Requirements', 'fas fa-list', Level::class);
+        yield MenuItem::linkToCrud('Clutters', 'fas fa-list', Clutter::class);
+        yield MenuItem::linkToCrud('Material', 'fas fa-list', Material::class);
     }
 }
