@@ -15,16 +15,9 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AppController extends AbstractController
 {
+    
     #[Route('/', name: 'app_index')]
-    public function index(ReviewRepository $reviewRepository): Response
-    {
-        return $this->render('app/index.html.twig', [
-            'reviews' => $reviewRepository->findAll(),
-        ]);
-    }
-
-    #[Route('/avis', name: 'avis')]
-    public function avis(Request $request, EntityManagerInterface $em): Response
+    public function avis(ReviewRepository $reviewRepository, Request $request, EntityManagerInterface $em): Response
     {
         // create "new" review
         $review = new Review();
@@ -46,8 +39,9 @@ class AppController extends AbstractController
             return $this->redirectToRoute('app_index');
         }
 
-        return $this->render('app/avis.html.twig', [
-            "reviewForm" => $reviewForm->createView()
+        return $this->render('app/index.html.twig', [
+            "reviewForm" => $reviewForm->createView(),
+            'reviews' => $reviewRepository->findAll(),
         ]);
     }
 

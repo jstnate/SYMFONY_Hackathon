@@ -11,10 +11,6 @@
 <div class="example-wrapper">
     <h1>Hello to NAIJE</h1>
 
-    <div>Add a review, click :
-        <a href="{{ path('avis') }}" class="details-link" title="More Details"> ici </a>
-    </div>
-
     <div style="display: flex; justify-content: space-around">
         {% for review in reviews %}
 
@@ -26,6 +22,9 @@
 
         {% endfor %}
     </div>
+
+    <h1>Add a review</h1>
+    {% include "partial/form.html.twig" %}
 
 </div>
 {% endblock %}
