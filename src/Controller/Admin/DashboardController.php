@@ -6,10 +6,6 @@ use App\Entity\Domain;
 use App\Entity\Lift;
 use App\Entity\Station;
 use App\Entity\Track;
-
-# use App\Entity\Review;
-# use App\Repository\ReviewRepository;
-
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -60,11 +56,8 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-
         yield MenuItem::linkToCrud('Tracks', 'fas fa-list', Track::class);
         yield MenuItem::linkToCrud('Lifts', 'fas fa-list', Lift::class);
-
-        # yield MenuItem::linkToCrud('Reviews', 'fa-regular fa-star', Review::class);
 
     }
 }

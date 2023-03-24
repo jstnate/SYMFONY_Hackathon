@@ -8,6 +8,8 @@ use App\Entity\Domain;
 use App\Entity\Level;
 use App\Entity\Material;
 use App\Entity\Type;
+use App\Entity\Review;
+use App\Repository\ReviewRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -26,7 +28,7 @@ class DashboardController extends AbstractDashboardController
          if (!$authorizationChecker->isGranted('ROLE_SUPER_ADMIN')) {
             return $this->redirectToRoute('app_login');
          }
-         return $this->redirect($adminUrlGenerator->setController(DomainCrudController::class)->generateUrl());
+         return $this->redirect($adminUrlGenerator->setController(ReviewCrudController::class)->generateUrl());
     }
 
     public function configureDashboard(): Dashboard
@@ -38,6 +40,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToCrud('Reviews', 'fa-regular fa-star', Review::class);
         yield MenuItem::linkToCrud('Domains', 'fas fa-list', Domain::class);
         yield MenuItem::linkToCrud('Lifts Type', 'fas fa-list', Type::class);
         yield MenuItem::linkToCrud('Tracks Difficulties', 'fas fa-list', Difficulty::class);
