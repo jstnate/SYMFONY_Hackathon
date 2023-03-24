@@ -1,0 +1,20 @@
+{
+  "name": "symfony_hackathon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch public/assets/css/output.scss:public/assets/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jstnate/SYMFONY_Hackathon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jstnate/SYMFONY_Hackathon/issues"
+  },
+  "homepage": "https://github.com/jstnate/SYMFONY_Hackathon#readme"
+}
