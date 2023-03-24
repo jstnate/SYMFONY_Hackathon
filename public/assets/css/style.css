@@ -1,3 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+*::selection {
+  background: #4E0000;
+  color: #FFFFFF;
+}
 
+main {
+  padding: 10%;
+}
+main .stations .station {
+  width: 100%;
+  height: 17.75rem;
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 48px;
+}
+@media screen and (max-height: 768px) {
+  main .stations .station {
+    height: auto;
+  }
+}
+main .stations .station:last-child {
+  margin-bottom: 0px;
+}
+main .stations .station .station__view {
+  height: 100%;
+  aspect-ratio: 384/286;
+  position: relative;
+}
+@media screen and (max-height: 768px) {
+  main .stations .station .station__view {
+    display: none;
+  }
+}
+main .stations .station .station__view img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+main .stations .station .station__view h4 {
+  display: grid;
+  place-items: center;
+  background: rgba(78, 0, 0, 0.1882352941);
+  position: absolute;
+  inset: 0;
+  font-weight: 700;
+  font-size: 40px;
+  color: #FFFFFF;
+}
+main .stations .station .station__main {
+  padding: 2rem 4rem 2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (max-height: 768px) {
+  main .stations .station .station__main {
+    flex-direction: column-reverse;
+    padding: 2rem;
+  }
+}
+main .stations .station .station__main .station__content {
+  width: 70%;
+  height: 100%;
+  margin-right: 5%;
+}
+@media screen and (max-height: 768px) {
+  main .stations .station .station__main .station__content {
+    margin-right: 0;
+  }
+}
+main .stations .station .station__main .station__content h4 {
+  margin-bottom: 1rem;
+  font-family: Gelasio;
+  font-size: 28px;
+}
+@media screen and (max-height: 768px) {
+  main .stations .station .station__main .station__content h4 {
+    text-align: center;
+  }
+}
+main .stations .station .station__main .station__content h4 a {
+  color: #4E0000;
+}
+main .stations .station .station__main .station__content h4 span {
+  font-size: 16px;
+}
+main .stations .station .station__main .station__content h4:hover {
+  text-decoration: underline #4E0000;
+}
+main .stations .station .station__main .station__content p {
+  font-family: Comic Neue;
+}
+main .stations .station .station__main .station__logo {
+  width: 25%;
+}
+@media screen and (max-height: 768px) {
+  main .stations .station .station__main .station__logo {
+    width: 50%;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */

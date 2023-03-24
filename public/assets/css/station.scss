@@ -1,0 +1,108 @@
+main {
+  padding: 10%;
+
+  .stations {
+    .station {
+      width: 100%;
+      height: 17.75rem;
+      display: flex;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 48px;
+
+      @media screen and (max-height: 768px) {
+        height: auto;
+      }
+
+      &:last-child {
+        margin-bottom: 0px;
+      }
+
+      .station__view {
+        height: 100%;
+        aspect-ratio: 384 / 286;
+        position: relative;
+
+        @media screen and (max-height: 768px) {
+          display: none;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          border-radius: 10px;
+        }
+
+        h4 {
+          display: grid;
+          place-items: center;
+          background: #4E000030;
+          position: absolute;
+          inset: 0;
+          font-weight: 700;
+          font-size: 40px;
+          color: #FFFFFF;
+        }
+      }
+
+      .station__main {
+        padding: 2rem 4rem 2rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media screen and (max-height: 768px) {
+          flex-direction: column-reverse;
+          padding: 2rem;
+        }
+
+        .station__content {
+          width: 70%;
+          height: 100%;
+          margin-right: 5%;
+
+          @media screen and (max-height: 768px) {
+            margin-right: 0;
+          }
+
+          h4 {
+            margin-bottom: 1rem;
+            font-family: Gelasio;
+            font-size: 28px;
+
+            @media screen and (max-height: 768px) {
+              text-align: center;
+            }
+
+            a {
+              color: #4E0000;
+            }
+
+            span {
+              font-size: 16px;
+            }
+
+            &:hover {
+              text-decoration: underline #4E0000;
+            }
+          }
+
+          p {
+            font-family: Comic Neue;
+          }
+        }
+
+        .station__logo {
+          width: 25%;
+
+          @media screen and (max-height: 768px) {
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+}

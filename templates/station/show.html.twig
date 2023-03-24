@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StationController!{% endblock %}
+
+{% block body %}
+
+<main>
+    <div>
+        <h1>{{ station.name }}</h1>
+        <img src="/uploads/stations/{{ station.logo }}" alt="logo {{ station.name }}"  class="station__logo">
+    </div>
+    <p>{{ station.description }}</p>
+    <div>
+        <ul>
+            <li>Niveau débutant</li>
+            <li>Niveau intermédiaire</li>
+            <li>Niveau avancé</li>
+            <li>Niveau confirmé</li>
+        </ul>
+        <div>
+            <div>
+                <h3>Pistes</h3>
+                <h3>Remontées</h3>
+            </div>
+            <div>
+                <ul class="tracks">
+                    {% for track in station.tracks %}
+                        <li class="track">
+
+                            {% if track.difficulty == 'verte' %}
+                                {% set class = '#0E730E' %}
+                            {% elseif track.difficulty == 'bleue' %}
+                                {% set class = '4EA4D7' %}
+                            {% elseif track.difficulty == 'rouge' %}
+                                {% set class = '#FF0E0E' %}
+                            {% elseif track.difficulty == 'noire' %}
+                                {% set class = '#000000' %}
+                            {% endif %}
+                            <div class="track__color" style="background: {{ class }}"></div>
+{#                            <span>{{ track.name }}</span>#}
+                            {% if track.isForcedClosure %}
+                                <span>{{ track.message }}</span>
+                            {% else %}
+                                <span>Open</span>
+                            {% endif %}
+                            <span>{{ track.IsForcedClosure }}</span>
+{#                            {% if track.forced_closure = 0 %}#}
+{#                                <span class="track__message danger">{{ track.message }}</span>#}
+{#                            {% else %}#}
+{#                                <span class="track__message success">Open</span>#}
+{#                            {% endif %}#}
+                            <span>{{ track.opening|date("H:i") }}</span>
+                            <span>{{ track.closing|date("H:i") }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <ul class="lifts">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

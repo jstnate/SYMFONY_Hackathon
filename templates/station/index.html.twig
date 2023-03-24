@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StationController!{% endblock %}
+
+{% block body %}
+
+<main>
+    <ul class="stations">
+        {% for station in stations %}
+            <li class="station">
+                <div class="station__view">
+                    <img src="/uploads/stations/{{ station.logo }}" alt="">
+                    <h4>{{ station.name }}</h4>
+                </div>
+                <div class="station__main">
+                    <div class="station__content">
+                        <h4><a href="/station/{{ station.id }}">{{ station.name }} <span>({{ station.domain }})</span></a></h4>
+                        <p>{{ station.description }}</p>
+                    </div>
+                    <img src="/uploads/stations/{{ station.logo }}" alt="logo {{ station.name }}"  class="station__logo">
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</main>
+{% endblock %}
