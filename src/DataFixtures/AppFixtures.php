@@ -146,6 +146,7 @@ class AppFixtures extends Fixture
         );
 
         $manager->persist($superAdmin);
+
         $manager->flush();
     }
 }

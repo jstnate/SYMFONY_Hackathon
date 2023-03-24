@@ -9,12 +9,23 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hello to NAIJE</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/nathanlefetey/www/cours/SYMFONY_Hackathon/src/Controller/AppController.php'|file_link(0) }}">src/Controller/AppController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/nathanlefetey/www/cours/SYMFONY_Hackathon/templates/app/index.html.twig'|file_link(0) }}">templates/app/index.html.twig</a></code></li>
-    </ul>
+    <div>Add a review, click :
+        <a href="{{ path('avis') }}" class="details-link" title="More Details"> ici </a>
+    </div>
+
+    <div style="display: flex; justify-content: space-around">
+        {% for review in reviews %}
+
+            {% include 'partial/review.html.twig' with {
+                review: review.review,
+                firstName: review.firstName,
+                lastName: review.lastName,
+            } %}
+
+        {% endfor %}
+    </div>
+
 </div>
 {% endblock %}
