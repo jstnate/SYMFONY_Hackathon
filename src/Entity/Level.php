@@ -21,9 +21,13 @@ class Level
     #[ORM\OneToMany(mappedBy: 'level', targetEntity: Track::class)]
     private Collection $tracks;
 
+    #[ORM\OneToMany(mappedBy: 'level', targetEntity: Station::class)]
+    private Collection $stations;
+
     public function __construct()
     {
         $this->tracks = new ArrayCollection();
+        $this->stations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -71,5 +75,40 @@ class Level
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Station>
+     */
+    public function getStations(): Collection
+    {
+        return $this->stations;
+    }
+
+    public function addStation(Station $station): self
+    {
+        if (!$this->stations->contains($station)) {
+            $this->stations->add($station);
+            $station->setLevel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStation(Station $station): self
+    {
+        if ($this->stations->removeElement($station)) {
+            // set the owning side to null (unless already changed)
+            if ($station->getLevel() === $this) {
+                $station->setLevel(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->title;
     }
 }
