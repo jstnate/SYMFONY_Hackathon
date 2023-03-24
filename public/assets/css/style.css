@@ -177,10 +177,19 @@ footer .mention {
   background-color: rgba(78, 0, 0, 0.3);
 }
 .homepage .avis {
-  padding: 100px 100px 0 100px;
+  padding: 0 100px;
+}
+.homepage .avis .lesavis {
+  padding-top: 100px;
   display: flex;
   justify-content: space-between;
   position: relative;
+}
+.homepage .avis .aucun {
+  padding: 10px;
+  width: 100%;
+  background-color: #4E0000;
+  color: #fff;
 }
 
 .review {

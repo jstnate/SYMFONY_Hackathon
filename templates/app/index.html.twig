@@ -19,28 +19,22 @@
         <h1>Les Domaines de France</h1>
 
         <div class="domaine">
-            <div class="card-domaine" style="background-image: url('{{ asset('assets/images/bg-img/homepage.jpg') }}');">
-                <h1>domaine 1</h1>
-            </div>
-            <div class="card-domaine" style="background-image: url('{{ asset('assets/images/bg-img/homepage.jpg') }}');">
-                <h1>domaine 1</h1>
-            </div>
-            <div class="card-domaine" style="background-image: url('{{ asset('assets/images/bg-img/homepage.jpg') }}');">
-                <h1>domaine 1</h1>
-            </div>
-            <div class="card-domaine" style="background-image: url('{{ asset('assets/images/bg-img/homepage.jpg') }}');">
-                <h1>domaine 1</h1>
-            </div>
-            <div class="card-domaine" style="background-image: url('{{ asset('assets/images/bg-img/homepage.jpg') }}');">
-                <h1>domaine 1</h1>
-            </div>
-            <div class="card-domaine" style="background-image: url('{{ asset('assets/images/bg-img/homepage.jpg') }}');">
-                <h1>domaine 1</h1>
-            </div>
+
+            {% for domaine in domaines %}
+
+                <div class="card-domaine" style="background-image: url('{{ asset('assets/images/bg-img/homepage.jpg') }}');">
+                    <h1>{{ domaine.name }}</h1>
+                </div>
+
+            {% endfor %}
+
         </div>
     </section>
 
     <section class="avis">
+
+        {% if reviews %}
+        <div class="lesavis">
             {% for review in reviews %}
 
                 {% include 'partial/review.html.twig' with {
@@ -49,6 +43,15 @@
                     lastName: review.lastName,
                 } %}
             {% endfor %}
+        </div>
+        {% endif %}
+
+
+
+        {% if not reviews %}
+            <p class="aucun">Aucun avis n'a été donné.</p>
+        {% endif %}
+
     </section>
 
     <section class="formulaire">

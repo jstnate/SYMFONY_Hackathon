@@ -46,7 +46,7 @@ class AppController extends AbstractController
         return $this->render('app/index.html.twig', [
             'reviewForm' => $reviewForm->createView(),
             'reviews' => $reviewRepository->findBy(array(), array('id'=>'desc'), 3, null),
-            'domaines' => $reviewRepository->findAll(),
+            'domaines' => $domainRepository->findAll(),
         ]);
     }
 
