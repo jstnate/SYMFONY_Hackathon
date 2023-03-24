@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Review;
 use App\Form\ReviewFormType;
 use App\Form\ReviewType;
+use App\Repository\DomainRepository;
 use App\Repository\ReviewRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,7 +18,10 @@ class AppController extends AbstractController
 {
 
     #[Route('/', name: 'app_index')]
-    public function avis(ReviewRepository $reviewRepository, Request $request, EntityManagerInterface $em): Response
+    public function avis(ReviewRepository $reviewRepository,
+                         DomainRepository $domainRepository,
+                         Request $request,
+                         EntityManagerInterface $em): Response
     {
         // create "new" review
         $review = new Review();
@@ -40,8 +44,9 @@ class AppController extends AbstractController
         }
 
         return $this->render('app/index.html.twig', [
-            "reviewForm" => $reviewForm->createView(),
-            'reviews' => $reviewRepository->findAll(),
+            'reviewForm' => $reviewForm->createView(),
+            'reviews' => $reviewRepository->findBy(array(), array('id'=>'desc'), 3, null),
+            'domaines' => $reviewRepository->findAll(),
         ]);
     }
 

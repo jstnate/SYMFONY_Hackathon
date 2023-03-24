@@ -1,0 +1,126 @@
+.review {
+  width: 45%;
+  height: 300px;
+  background-color: #4E0000;
+  border-radius: 10px;
+  border: 3px solid #fff;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &:first-child {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 2;
+  }
+  .avisclient {
+    font-family: Gelasio;
+    font-size: 36px;
+
+  }
+
+  .name {
+    font-family: Comic Neue;
+    font-size: 32px;
+    position: absolute;
+    bottom: 10px;
+  }
+
+}
+
+
+.formulaire {
+  padding: 0 100px 150px 100px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+
+  .text {
+    width: 30%;
+    color: #4E0000;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+
+    h1 {
+      font-family: Gelasio;
+    }
+
+    p {
+      font-family: Comic Neue;
+    }
+  }
+
+  .form {
+    width: 70%;
+    height: 500px;
+    background-color: #4E0000;
+    border-radius: 10px;
+    color: #fff;
+    position: relative;
+
+    form {
+      padding: 10%;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      font-family: Comic Neue;
+      font-size: 24px;
+
+      .names {
+        display: flex;
+        justify-content: space-between;
+
+        div {
+          position: relative;
+
+          label {
+            position: absolute;
+            left: 10px;
+            bottom: 5px;
+          }
+          input {
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid #fff;
+          }
+        }
+
+      }
+
+      .textavis {
+        position: relative;
+
+        label {
+          position: absolute;
+          left: 10px;
+          bottom: 10px;
+        }
+        textarea {
+          width: 100%;
+          background-color: transparent;
+          border: none;
+          border-bottom: 2px solid #fff;
+        }
+      }
+    }
+    button {
+      padding: 10px 70px;
+      color: #4E0000;
+      font-family: Oswald;
+      font-size: 24px;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border: none;
+      background: #FFFFFF;
+      border-radius: 10px;
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+    }
+  }
+}

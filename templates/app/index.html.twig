@@ -40,9 +40,7 @@
         </div>
     </section>
 
-
     <section class="avis">
-        <div style="display: flex; justify-content: space-around">
             {% for review in reviews %}
 
                 {% include 'partial/review.html.twig' with {
@@ -50,13 +48,16 @@
                     firstName: review.firstName,
                     lastName: review.lastName,
                 } %}
-
             {% endfor %}
-        </div>
     </section>
 
-    <section class="form">
-        <h1>Add a review</h1>
+    <section class="formulaire">
+
+        <div class="text">
+            <h1>Laissez nous un avis</h1>
+            <p>Si vous avez aimé notre site, laissez nous un avis :) </p>
+        </div>
+
         {% include "partial/form.html.twig" %}
     </section>
 
