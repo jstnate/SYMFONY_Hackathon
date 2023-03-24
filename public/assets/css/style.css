@@ -121,6 +121,11 @@ footer .mention {
   font-size: 32px;
   text-align: center;
 }
+@media screen and (max-width: 769px) {
+  .homepage .banner div p {
+    padding: 0 50px;
+  }
+}
 .homepage .domaines {
   padding: 0 90px;
   display: flex;
@@ -156,16 +161,32 @@ footer .mention {
 .homepage .domaines .domaine {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   gap: 50px;
   padding-bottom: 100px;
 }
 .homepage .domaines .domaine .card-domaine {
-  width: 500px;
+  width: 45%;
   height: 450px;
   border-radius: 10px;
+}
+@media screen and (max-width: 1024px) {
+  .homepage .domaines .domaine .card-domaine {
+    height: 350px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .homepage .domaines .domaine .card-domaine {
+    width: 100%;
+    height: 250px;
+  }
+}
+.homepage .domaines .domaine .card-domaine a {
   color: #fff;
   font-family: Gelasio;
+  text-decoration: none;
+  font-size: 28px;
+  text-align: center;
 }
 .homepage .domaines .domaine .card-domaine h1 {
   border-radius: 10px;
@@ -190,6 +211,7 @@ footer .mention {
   width: 100%;
   background-color: #4E0000;
   color: #fff;
+  border-radius: 10px;
 }
 
 .review {
@@ -205,6 +227,11 @@ footer .mention {
   justify-content: center;
   position: relative;
 }
+@media screen and (max-width: 1024px) {
+  .review {
+    height: 200px;
+  }
+}
 .review:first-child {
   position: absolute;
   top: -100px;
@@ -212,9 +239,15 @@ footer .mention {
   transform: translate(-50%);
   z-index: 2;
 }
+@media screen and (max-width: 1024px) {
+  .review:first-child {
+    top: -50px;
+  }
+}
 .review .avisclient {
   font-family: Gelasio;
   font-size: 36px;
+  text-align: center;
 }
 .review .name {
   font-family: Comic Neue;
@@ -228,6 +261,11 @@ footer .mention {
   display: flex;
   justify-content: center;
   gap: 50px;
+}
+@media screen and (max-width: 500px) {
+  .formulaire {
+    flex-direction: column;
+  }
 }
 .formulaire .text {
   width: 30%;

@@ -22,9 +22,11 @@
 
             {% for domaine in domaines %}
 
-                <div class="card-domaine" style="background-image: url('{{ asset('assets/images/bg-img/homepage.jpg') }}');">
+            <div class="card-domaine" style="background-image: url('{{ asset('assets/images/bg-img/homepage.jpg') }}');">
+                <a href="#">
                     <h1>{{ domaine.name }}</h1>
-                </div>
+                </a>
+            </div>
 
             {% endfor %}
 
