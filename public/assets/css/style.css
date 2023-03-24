@@ -86,4 +86,40 @@ footer .mention {
   font-size: 16px;
 }
 
+.homepage {
+  display: flex;
+  flex-direction: column;
+  gap: 150px;
+}
+.homepage .banner {
+  width: 100%;
+  height: 100vh;
+  background-image: url("../images/bg-img/homepage.jpg");
+  background-size: cover;
+}
+.homepage .banner div {
+  width: 100%;
+  height: 100%;
+  padding: 220px 240px;
+  background-color: rgba(78, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 65px;
+}
+.homepage .banner div h1 {
+  font-family: Gelasio;
+  font-size: 48px;
+  text-align: center;
+}
+.homepage .banner div p {
+  padding: 0 100px;
+  font-family: Comic Neue;
+  font-size: 32px;
+  text-align: center;
+}
+
 /*# sourceMappingURL=style.css.map */

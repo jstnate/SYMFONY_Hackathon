@@ -15,7 +15,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AppController extends AbstractController
 {
-    
+
     #[Route('/', name: 'app_index')]
     public function avis(ReviewRepository $reviewRepository, Request $request, EntityManagerInterface $em): Response
     {
