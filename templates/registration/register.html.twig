@@ -3,22 +3,31 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-
+<div class="register_background">
     {{ form_start(registrationForm, {'attr': {'class': 'register'}}) }}
-        <h1 class="register__title">Register</h1>
-        <div>
-            {{ form_row(registrationForm.roles) }}
-        </div>
-        <div>
-            {{ form_row(registrationForm.email) }}
-        </div>
-        <div>
-            {{ form_row(registrationForm.password, {
-                label: 'Password'
-            }) }}
+        <div class="register_header">
+                <h1 class="register_title">S'inscrire</h1>
+                <p class="register_details">Veuillez remplir les champs requis pour vous inscrire !</p>
         </div>
 
-        <button type="submit" class="btn">Register</button>
-        <p>Alrready have an account ? <a href="{{ path('app_login') }}">Signin</a></p>
+        <div class="register_fields">
+                <div>
+                        {{ form_row(registrationForm.email, { label: 'Adresse email*' }) }}
+                </div>
+                <div>
+                        {{ form_row(registrationForm.password, {
+                                label: 'Mot de passe*'
+                        }) }}
+                </div>
+                <div>
+                        {{ form_row(registrationForm.roles, { label: 'Rôle utilisateur*' }) }}
+                </div>
+        </div>
+
+       <div class="register_footer">
+               <button type="submit" class="register_button">S'inscrire</button>
+               <p>Déjà parmi nous ? <a href="{{ path('app_login') }}">Se connecter</a></p>
+       </div>
     {{ form_end(registrationForm) }}
+</div>
 {% endblock %}
