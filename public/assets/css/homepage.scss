@@ -6,7 +6,7 @@
   .banner {
     width: 100%;
     height: 100vh;
-    background-image: url('../images/bg-img/homepage.jpg');
+    background-image: url('../images/homepage.jpg');
     background-size: cover;
 
     div {
@@ -22,6 +22,10 @@
       align-items: center;
       gap: 65px;
 
+      @media screen and (max-width: 1024px)  {
+        padding: 200px;
+      }
+
       h1 {
         font-family: Gelasio;
         font-size: 48px;
@@ -33,10 +37,6 @@
         font-family: Comic Neue;
         font-size: 32px;
         text-align: center;
-
-        @media screen and (max-width: 769px)  {
-          padding: 0 50px;
-        }
       }
     }
   }
@@ -91,12 +91,8 @@
         border-radius: 10px;
 
         @media screen and (max-width: 1024px)  {
-          height: 350px;
-        }
-
-        @media screen and (max-width: 500px)  {
+          height: 300px;
           width: 100%;
-          height: 250px;
         }
 
         a {
@@ -116,6 +112,12 @@
           height: 100%;
           background-color: rgba(78, 0, 0, .3);
         }
+      }
+    }
+
+    @media screen and (max-width: 700px){
+      .card-domaine {
+        background-color: #0e4e36
       }
     }
   }

@@ -12,13 +12,22 @@ class ReviewFormType extends AbstractType
     {
         $builder
             ->add('lastName', options:[
-                'label' => 'Nom*'
+                'label' => false,
+                'attr' => array(
+                    'placeholder' => 'Nom*'
+                )
             ])
             ->add('firstName', options:[
-                'label' => 'Prénom*'
+                'label' => false,
+                'attr' => array(
+                    'placeholder' => 'Prénom*'
+                )
             ])
             ->add('review', options:[
-                'label' => 'Avis*'
+                'label' => false,
+                'attr' => array(
+                    'placeholder' => 'Avis*'
+                )
             ])
         ;
     }

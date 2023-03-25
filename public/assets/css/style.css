@@ -13,20 +13,40 @@ header {
   align-items: center;
   justify-content: space-between;
 }
-header a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: normal;
+@media screen and (max-width: 1024px) {
+  header {
+    height: 90px;
+  }
 }
 header .logo a {
   font-family: Fruktur;
   font-size: 36px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: normal;
 }
 header nav {
   font-family: Oswald;
   font-size: 28px;
   display: flex;
   gap: 60px;
+  transition: all 0.3s ease-in-out;
+}
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: normal;
+}
+header nav a::after {
+  content: "";
+  width: 0px;
+  height: 3px;
+  display: block;
+  background: #fff;
+  transition: 300ms;
+}
+header nav a:hover::after {
+  width: 100%;
 }
 
 footer {
@@ -38,9 +58,20 @@ footer {
   flex-direction: column;
   gap: 50px;
 }
+@media screen and (max-width: 1024px) {
+  footer {
+    height: auto;
+  }
+}
 footer .infos {
   display: flex;
   justify-content: space-between;
+}
+@media screen and (max-width: 1024px) {
+  footer .infos {
+    flex-direction: column;
+    gap: 35px;
+  }
 }
 footer .infos .contact {
   display: flex;
@@ -61,26 +92,39 @@ footer .infos .lien h1, footer .infos .propos h1 {
   font-size: 28px;
   font-family: Oswald;
 }
-footer .infos .up {
+footer .infos .lien a, footer .infos .propos a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: normal;
+}
+footer .infos .lien a::after, footer .infos .propos a::after {
+  content: "";
+  width: 0px;
+  height: 2px;
+  display: block;
+  background: #fff;
+  transition: 300ms;
+}
+footer .infos .lien a:hover::after, footer .infos .propos a:hover::after {
+  width: 100%;
+}
+footer .infos .back-to-top {
   height: 60px;
   width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 996;
   background-color: #fff;
   color: #4E0000;
-  font-size: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  border: none;
+  border-radius: 50px;
+  transition: all 1s;
 }
 footer p, footer a {
   font-size: 20px;
   font-family: Comic Neue;
   color: #fff;
   text-decoration: none;
-}
-footer a:hover {
-  text-decoration: underline;
 }
 footer .mention {
   font-size: 16px;
@@ -94,7 +138,7 @@ footer .mention {
 .homepage .banner {
   width: 100%;
   height: 100vh;
-  background-image: url("../images/bg-img/homepage.jpg");
+  background-image: url("../images/homepage.jpg");
   background-size: cover;
 }
 .homepage .banner div {
@@ -110,6 +154,11 @@ footer .mention {
   align-items: center;
   gap: 65px;
 }
+@media screen and (max-width: 1024px) {
+  .homepage .banner div {
+    padding: 200px;
+  }
+}
 .homepage .banner div h1 {
   font-family: Gelasio;
   font-size: 48px;
@@ -120,11 +169,6 @@ footer .mention {
   font-family: Comic Neue;
   font-size: 32px;
   text-align: center;
-}
-@media screen and (max-width: 769px) {
-  .homepage .banner div p {
-    padding: 0 50px;
-  }
 }
 .homepage .domaines {
   padding: 0 90px;
@@ -172,13 +216,8 @@ footer .mention {
 }
 @media screen and (max-width: 1024px) {
   .homepage .domaines .domaine .card-domaine {
-    height: 350px;
-  }
-}
-@media screen and (max-width: 500px) {
-  .homepage .domaines .domaine .card-domaine {
+    height: 300px;
     width: 100%;
-    height: 250px;
   }
 }
 .homepage .domaines .domaine .card-domaine a {
@@ -196,6 +235,11 @@ footer .mention {
   width: 100%;
   height: 100%;
   background-color: rgba(78, 0, 0, 0.3);
+}
+@media screen and (max-width: 700px) {
+  .homepage .domaines .card-domaine {
+    background-color: #0e4e36;
+  }
 }
 .homepage .avis {
   padding: 0 100px;
@@ -262,9 +306,11 @@ footer .mention {
   justify-content: center;
   gap: 50px;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1024px) {
   .formulaire {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 .formulaire .text {
@@ -273,6 +319,11 @@ footer .mention {
   display: flex;
   flex-direction: column;
   gap: 17px;
+}
+@media screen and (max-width: 1024px) {
+  .formulaire .text {
+    width: 100%;
+  }
 }
 .formulaire .text h1 {
   font-family: Gelasio;
@@ -297,21 +348,45 @@ footer .mention {
   font-size: 24px;
 }
 .formulaire .form form .names {
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  gap: 15px;
 }
 .formulaire .form form .names div {
   position: relative;
+  width: 100%;
 }
 .formulaire .form form .names div label {
   position: absolute;
-  left: 10px;
-  bottom: 5px;
+  padding: 10px 20px;
+  pointer-events: none;
+  font-size: 24px;
+  color: #fff;
+  font-family: Comic Neue;
+  transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
 }
 .formulaire .form form .names div input {
+  width: 100%;
+  padding: 10px 20px;
   background-color: transparent;
   border: none;
   border-bottom: 2px solid #fff;
+  font-size: 24px;
+  color: #fff;
+  font-family: Comic Neue;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+.formulaire .form form .names div input::placeholder {
+  font-size: 24px;
+  color: #fff;
+  font-family: Comic Neue;
+}
+.formulaire .form form .names div input:focus ~ div label {
+  top: 30px;
+  left: 30px;
+  font-size: large;
 }
 .formulaire .form form .textavis {
   position: relative;
@@ -326,6 +401,15 @@ footer .mention {
   background-color: transparent;
   border: none;
   border-bottom: 2px solid #fff;
+  padding: 10px 20px;
+  font-size: 24px;
+  color: #fff;
+  font-family: Comic Neue;
+}
+.formulaire .form form .textavis textarea::placeholder {
+  font-size: 24px;
+  color: #fff;
+  font-family: Comic Neue;
 }
 .formulaire .form button {
   padding: 10px 70px;
@@ -339,6 +423,10 @@ footer .mention {
   position: absolute;
   bottom: 40px;
   right: 40px;
+  cursor: pointer;
+}
+.formulaire .form button:hover {
+  box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.5);
 }
 
 /*# sourceMappingURL=style.css.map */
