@@ -4,6 +4,31 @@
   box-sizing: border-box;
 }
 
+header {
+  padding: 15px 50px;
+  height: 76px;
+  background-color: #4E0000;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: normal;
+}
+header .logo a {
+  font-family: Fruktur;
+  font-size: 36px;
+}
+header nav {
+  font-family: Oswald;
+  font-size: 28px;
+  display: flex;
+  gap: 60px;
+}
+
 .login_background {
   width: 100vw;
   height: 100vh;
@@ -241,6 +266,223 @@
 }
 .register_background .register_footer .logout a {
   margin: 5px 0 0;
+}
+
+.domain__banner {
+  width: 100vw;
+  height: 70vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 650px) {
+  .domain__banner {
+    text-align: center;
+  }
+  .domain__banner h1, .domain__banner p {
+    width: 80%;
+  }
+}
+.domain__banner img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.domain__banner h1 {
+  font-size: 60px;
+  font-family: "Gelasio", serif;
+  font-weight: 900;
+  color: #FFFFFF;
+}
+.domain__banner p {
+  color: #FFFFFF;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: "Comic Neue", sans-serif;
+}
+
+.domain__content {
+  margin: 10vh auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.domain__content h2 {
+  font-family: "Oswald", sans-serif;
+  font-weight: 900;
+  font-size: 32px;
+  color: #4E0000;
+  position: relative;
+  margin-bottom: 100px;
+}
+@media screen and (max-width: 650px) {
+  .domain__content h2 {
+    width: 80%;
+    text-align: center;
+  }
+}
+.domain__content h2::before, .domain__content h2::after {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 75%;
+}
+.domain__content h2::before {
+  border-top: 4px solid #4E0000;
+  border-left: 4px solid #4E0000;
+  top: -5px;
+  left: -20px;
+}
+.domain__content h2::after {
+  border-bottom: 4px solid #4E0000;
+  border-right: 4px solid #4E0000;
+  bottom: -10px;
+  right: -20px;
+}
+
+.station-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.15);
+  margin: 25px auto;
+}
+@media screen and (max-width: 800px) {
+  .station-card {
+    flex-direction: column;
+    height: auto;
+  }
+}
+.station-card .station-pic {
+  height: 100%;
+  width: 30%;
+  border-radius: 10px;
+  background: url("../images/station-pic.png") no-repeat center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 800px) {
+  .station-card .station-pic {
+    width: 100%;
+    height: 200px;
+  }
+}
+.station-card .station-pic a {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 900;
+  font-family: "Gelasio", serif;
+}
+.station-card .station-pic a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.station-card .station-description {
+  width: 50%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: "Comic Neue", sans-serif;
+  gap: 15px;
+}
+@media screen and (max-width: 800px) {
+  .station-card .station-description {
+    width: 80%;
+    margin: 15px auto;
+    align-items: center;
+    text-align: center;
+  }
+}
+.station-card .station-description a {
+  font-size: 20px;
+  font-weight: 900;
+  color: #4E0000;
+}
+.station-card .station-description a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.station-card img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+@media screen and (max-width: 800px) {
+  .station-card img {
+    margin: 20px auto;
+  }
+}
+
+footer {
+  padding: 70px 100px;
+  height: 450px;
+  background-color: #4E0000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+footer .infos {
+  display: flex;
+  justify-content: space-between;
+}
+footer .infos .contact {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+footer .infos .contact .logo {
+  font-family: Fruktur;
+  font-size: 80px;
+}
+footer .infos .lien, footer .infos .propos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+footer .infos .lien h1, footer .infos .propos h1 {
+  text-transform: uppercase;
+  font-size: 28px;
+  font-family: "Oswald", sans-serif;
+}
+footer .infos .up {
+  height: 60px;
+  width: 60px;
+  background-color: #fff;
+  color: #4E0000;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: none;
+}
+footer .infos .up:hover {
+  cursor: pointer;
+}
+footer p, footer a {
+  font-size: 20px;
+  font-family: "Comic Neue", sans-serif;
+  color: #fff;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+footer .mention {
+  font-size: 16px;
 }
 
 /*# sourceMappingURL=style.css.map */

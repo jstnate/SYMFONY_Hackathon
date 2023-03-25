@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DomainController!{% endblock %}
+
+{% block body %}
+    {% include 'partial/header.html.twig' %}
+    <section class="domain__banner">
+        <img src="{{ asset(banner, 'source') }}" alt="Image du domaine">
+        <h1>{{ domain.name }}</h1>
+        <p>{{ domain.description }}</p>
+    </section>
+
+    <section class="domain__content">
+        <h2>Les station du domaine {{ domain.name }}</h2>
+        {% for station in stations %}
+            {% set logo = station.logo is null ? 'station-logo-default.png' : station.logo %}
+            {% set description = station.description is null ? 'Cette station ne possède pas encore de présentation' : station.description %}
+            {% include 'cards/station-card.html.twig' with {
+                name: station.name,
+                description: description,
+                logo: logo,
+                url: path('app_station', {'id': station.id})
+            } %}
+        {% endfor %}
+    </section>
+    {% include 'partial/footer.html.twig' %}
+{% endblock %}
