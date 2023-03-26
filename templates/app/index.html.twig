@@ -23,7 +23,7 @@
             {% for domaine in domaines %}
 
             <div class="card-domaine" style="background-image: url('{{ asset('assets/images/homepage.jpg') }}');">
-                <a href="#">
+                <a href="{{ path('/app_domain', {'id': domaine.id}) }}">
                     <h1>{{ domaine.name }}</h1>
                 </a>
             </div>
