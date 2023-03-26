@@ -15,8 +15,10 @@
         {% for station in stations %}
             {% set logo = station.logo is null ? 'station-logo-default.png' : station.logo %}
             {% set description = station.description is null ? 'Cette station ne possède pas encore de présentation' : station.description %}
+            {% set domain = '' %}
             {% include 'cards/station-card.html.twig' with {
                 name: station.name,
+                domain: domain,
                 description: description,
                 logo: logo,
                 url : '#'

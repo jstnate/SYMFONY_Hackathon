@@ -3,7 +3,9 @@
         <a href="{{ url }}">{{ name }}</a>
     </div>
     <div class="station-description">
-        <a href="{{ url }}">{{ name }}</a>
+        <a href="{{ url }}">{{ name }}
+            <span>{{ domain }}</span>
+        </a>
         <p>{{ description }}</p>
     </div>
     <img src="{{ asset(logo, 'source') }}" alt="logo de la station">
