@@ -59,7 +59,7 @@ class AppFixtures extends Fixture
             $manager->persist($clutter);
         }
 
-        foreach (['Les 3 Vallées', 'Les Portes du Soleil', 'Paradiski', 'La Voie Lactée', 'Les Sybelles', "Tignes-Val d'Isères", 'Serre Chevalier'] as $key) {
+        foreach (['Les 3 Vallées', 'Les Portes du Soleil', 'Paradiski', 'Megève', 'Espace Diamant', "Tignes-Val d'Isères", 'Les 2 Alpes', 'Espace San Bernardo', 'Les Sybelles', 'Les Contamines'] as $key) {
             $domain = new Domain();
             $domain->setName($key);
             $domain->setDescription('Ceci est la description de ce domaine de ski');
