@@ -7,15 +7,16 @@ header {
   align-items: center;
   justify-content: space-between;
 
-  a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: normal;
+  @media screen and (max-width: 1024px)  {
+    height: 90px;
   }
 
   .logo a {
     font-family: Fruktur;
     font-size: 36px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: normal;
   }
 
   nav {
@@ -23,5 +24,26 @@ header {
     font-size: 28px;
     display: flex;
     gap: 60px;
+    transition: all .3s ease-in-out;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: normal;
+
+      &::after {
+        content: '';
+        width: 0px;
+        height: 3px;
+        display: block;
+        background: #fff;
+        transition: 300ms;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+
   }
 }

@@ -1,31 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AppController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello to NAIJE</h1>
+{% include 'partial/header.html.twig' %}
+<div class="homepage">
 
-    <div>Add a review, click :
-        <a href="{{ path('avis') }}" class="details-link" title="More Details"> ici </a>
-    </div>
+    <section class="banner">
+        <div>
+            <h1>Trouvez le domaine de ski de vos rêves</h1>
+            <p>Retrouvez toutes les informations des stations et domaines skiables de France, accessible en quelques cliques.</p>
+        </div>
+    </section>
 
-    <div style="display: flex; justify-content: space-around">
-        {% for review in reviews %}
 
-            {% include 'partial/review.html.twig' with {
-                review: review.review,
-                firstName: review.firstName,
-                lastName: review.lastName,
-            } %}
+    <section class="domaines">
+        <h1>Les Domaines de France</h1>
 
-        {% endfor %}
-    </div>
+        <div class="domaine">
 
+            {% for domaine in domaines %}
+
+            <div class="card-domaine" style="background-image: url('{{ asset('assets/images/homepage.jpg') }}');">
+                <a href="{{ path('app_domain', {'id': domaine.id}) }}">
+                    <h1>{{ domaine.name }}</h1>
+                </a>
+            </div>
+
+            {% endfor %}
+
+        </div>
+    </section>
+
+    <section class="avis">
+
+        {% if reviews %}
+        <div class="lesavis">
+            {% for review in reviews|slice(-3) %}
+
+                {% include 'partial/review.html.twig' with {
+                    review: review.review,
+                    firstName: review.firstName,
+                    lastName: review.lastName,
+                } %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+
+
+        {% if not reviews %}
+            <p class="aucun">Aucun avis n'a été donné.</p>
+        {% endif %}
+
+    </section>
+
+    <section class="formulaire">
+
+        <div class="text">
+            <h1>Laissez nous un avis</h1>
+            <p>Si vous avez aimé notre site, laissez nous un avis :) </p>
+        </div>
+
+        {% include "partial/form.html.twig" %}
+    </section>
+
+{% include 'partial/footer.html.twig' %}
 </div>
 {% endblock %}
