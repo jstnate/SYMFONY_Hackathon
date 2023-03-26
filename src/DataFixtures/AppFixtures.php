@@ -73,7 +73,7 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i < 70; $i++) {
             $station = new Station();
-            $station->setName('Station' . $i);
+            $station->setName('Station ' . $i);
             $station->setDomain($domains[random_int(0, count($domains) - 1)]);
             $manager->persist($station);
         }
@@ -98,7 +98,7 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i < 700; $i++) {
             $track = new Track();
-            $track->setName('Station ' . $i);
+            $track->setName('Track ' . $i);
             $track->setStation($stations[random_int(0, count($stations) - 1)]);
             $track->setClosing(DateTime::createFromFormat('H:i', $closingTime));
             $track->setOpening(DateTime::createFromFormat('H:i', $openingTime));
@@ -106,6 +106,12 @@ class AppFixtures extends Fixture
             $track->setLevel($levels[random_int(0, count($levels) - 1)]);
             $track->setDifficulty($difficulties[random_int(0, count($difficulties) - 1)]);
             $track->setMaterial($materials[random_int(0, count($materials) - 1)]);
+
+            if(random_int(1, 8) === 8) {
+                $track->setMessage('Fermé pour des raisons techniques');
+                $track->setForcedClosure(true);
+            }
+
             $manager->persist($track);
         }
 
@@ -117,6 +123,12 @@ class AppFixtures extends Fixture
             $lift->setOpening(DateTime::createFromFormat('H:i', $openingTime));
             $lift->setClutter($clutters[random_int(0, count($clutters) - 1)]);
             $lift->setType($types[random_int(0, count($types) - 1)]);
+
+            if(random_int(1, 8) === 8) {
+                $lift->setMessage('Fermé pour des raisons techniques');
+                $lift->setForcedClosure(true);
+            }
+
             $manager->persist($lift);
         }
 
