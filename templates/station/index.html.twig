@@ -1,15 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello StationController!{% endblock %}
+{% block title %}Nos Stations{% endblock %}
 
 {% block body %}
 
-<main>
+<div class="station">
+    <img src="{{ asset('assets/images/stations_top.png') }}" alt="">
+    <div class="overlay"></div>
+    <div class="content">
+        <h2>Trouvez la station de ski de vos rêves</h2>
+        <p>Retrouvez toutes les informations des stations et domaines skiables de France, accessible en quelques cliques.</p>
+    </div>
+</div>
+<main class="station">
+
+    <h1>Les stations de france</h1>
+
     <ul class="stations">
         {% for station in stations %}
             <li class="station">
                 <div class="station__view">
-                    <img src="/uploads/stations/{{ station.logo }}" alt="">
+                    <img src="/uploads/stations/{{ station.image }}" alt="">
                     <h4>{{ station.name }}</h4>
                 </div>
                 <div class="station__main">

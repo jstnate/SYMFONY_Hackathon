@@ -98,6 +98,7 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i < 700; $i++) {
             $track = new Track();
+            $track->setName('Station ' . $i);
             $track->setStation($stations[random_int(0, count($stations) - 1)]);
             $track->setClosing(DateTime::createFromFormat('H:i', $closingTime));
             $track->setOpening(DateTime::createFromFormat('H:i', $openingTime));
@@ -110,6 +111,7 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i < 700; $i++) {
             $lift = new Lift();
+            $lift->setName('Lift ' . $i);
             $lift->setStation($stations[random_int(0, count($stations) - 1)]);
             $lift->setClosing(DateTime::createFromFormat('H:i', $closingTime));
             $lift->setOpening(DateTime::createFromFormat('H:i', $openingTime));

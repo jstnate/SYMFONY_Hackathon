@@ -1,64 +1,140 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello StationController!{% endblock %}
+{% block title %}{{ station.name }}{% endblock %}
 
 {% block body %}
 
-<main>
-    <div>
+<div class="station-single">
+    <img src="/uploads/stations/{{ station.image }}" alt="">
+    <div class="overlay"></div>
+    <h2>{{ station.name }}</h2>
+</div>
+<main class="station-single">
+    <div class="station__infos">
         <h1>{{ station.name }}</h1>
         <img src="/uploads/stations/{{ station.logo }}" alt="logo {{ station.name }}"  class="station__logo">
     </div>
-    <p>{{ station.description }}</p>
+    <p class="station__description">{{ station.description }}</p>
     <div>
-        <ul>
-            <li>Niveau débutant</li>
-            <li>Niveau intermédiaire</li>
-            <li>Niveau avancé</li>
-            <li>Niveau confirmé</li>
+        <ul class="levels">
+            <li class="level verte">Niveau débutant</li>
+            <li class="level bleue">Niveau intermédiaire</li>
+            <li class="level rouge">Niveau avancé</li>
+            <li class="level noire">Niveau confirmé</li>
         </ul>
-        <div>
-            <div>
-                <h3>Pistes</h3>
+        <div class="tab">
+            <div class="select">
+                <h3 class="selected">Pistes</h3>
                 <h3>Remontées</h3>
             </div>
-            <div>
+            <div class="lists">
                 <ul class="tracks">
                     {% for track in station.tracks %}
-                        <li class="track">
+                        <li class="track {{ track.difficulty }}">
+                            <div>
+                                {% if track.difficulty == 'verte' %}
+                                    {% set class = '#0E730E' %}
+                                {% elseif track.difficulty == 'bleue' %}
+                                    {% set class = '#4EA4D7' %}
+                                {% elseif track.difficulty == 'rouge' %}
+                                    {% set class = '#FF0E0E' %}
+                                {% elseif track.difficulty == 'noire' %}
+                                    {% set class = '#000000' %}
+                                {% endif %}
+                                <div class="track__color" style="background: {{ class }}"></div>
+                                <span class="track__name">{{ track.name }}</span>
+                            </div>
+                            <div class="status">
+                                {% if track.isForcedClosure %}
+                                    <span style="color: #FF0E0E;">{{ track.message }}</span>
+                                {% else %}
+                                    <span style="color: #0E730E;">Ouverte</span>
+                                {% endif %}
+                            </div>
 
-                            {% if track.difficulty == 'verte' %}
-                                {% set class = '#0E730E' %}
-                            {% elseif track.difficulty == 'bleue' %}
-                                {% set class = '4EA4D7' %}
-                            {% elseif track.difficulty == 'rouge' %}
-                                {% set class = '#FF0E0E' %}
-                            {% elseif track.difficulty == 'noire' %}
-                                {% set class = '#000000' %}
-                            {% endif %}
-                            <div class="track__color" style="background: {{ class }}"></div>
-{#                            <span>{{ track.name }}</span>#}
-                            {% if track.isForcedClosure %}
-                                <span>{{ track.message }}</span>
-                            {% else %}
-                                <span>Open</span>
-                            {% endif %}
-                            <span>{{ track.IsForcedClosure }}</span>
-{#                            {% if track.forced_closure = 0 %}#}
-{#                                <span class="track__message danger">{{ track.message }}</span>#}
-{#                            {% else %}#}
-{#                                <span class="track__message success">Open</span>#}
-{#                            {% endif %}#}
-                            <span>{{ track.opening|date("H:i") }}</span>
-                            <span>{{ track.closing|date("H:i") }}</span>
+                            <div class="timers">
+                                <span>{{ track.opening|date("H:i") }}</span>
+                                <span>{{ track.closing|date("H:i") }}</span>
+                            </div>
                         </li>
                     {% endfor %}
                 </ul>
                 <ul class="lifts">
+                    {% for lift in station.lifts %}
+                        <li class="lift">
+                            <div class="info">
+                                {% if lift.type == 'tire-fesses'%}
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuIDxlY86cqGkbq94q_oUVnf2m3LzzBscitUGzeCj2r-IVRlbIkCWrj0n3ENLiNWdlYUI&usqp=CAU" alt="">
+                                    {% else %}
+                                        <img src="https://cdn-icons-png.flaticon.com/512/71/71546.png" alt="">
+                                {% endif %}
+                                <span class="lift__name">{{ lift.name }}</span>
+                            </div>
+                            <div class="status">
+                                {% if lift.isForcedClosure %}
+                                    <div style="color: #FF0E0E; width: 50%;">{{ lift.message }}</div>
+                                {% else %}
+                                    <div style="color: #0E730E; width: 50%;">Ouvert</div>
+                                {% endif %}
+                                <div style="width: 50%;">
+                                    {% if lift.clutter == 'faible' %}
+                                        <i class="fa-solid fa-user"></i>
+                                    {% elseif lift.clutter == 'fort' %}
+                                        <i class="fa-solid fa-user"></i>
+                                        <i class="fa-solid fa-user"></i>
+                                    {% else %}
+                                        <i class="fa-solid fa-user"></i>
+                                        <i class="fa-solid fa-user"></i>
+                                        <i class="fa-solid fa-user"></i>
+                                    {% endif %}
+                                </div>
+                            </div>
 
+                            <div class="timers">
+                                <span>{{ lift.opening|date("H:i") }}</span>
+                                <span>{{ lift.closing|date("H:i") }}</span>
+                            </div>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
     </div>
 </main>
+
+<script>
+    let selects = document.querySelectorAll('.select h3')
+    selects.forEach(select => {
+        select.addEventListener('click', (e) => {
+            let el = e.target.closest('h3')
+            console.log(el)
+            if(el.classList.contains('selected')) return
+            document.querySelector('.selected').classList.remove('selected')
+            el.classList.add('selected')
+            document.querySelector('.select').classList.toggle('toggled')
+            document.querySelector('.lists').classList.toggle('toggled')
+        })
+    })
+
+    let levels = document.querySelectorAll('.levels .level')
+    let tracks = document.querySelectorAll('.tracks .track')
+
+    levels.forEach(level => level.addEventListener('click', (e) => {
+        let same;
+        if(e.target.classList.contains('active')) same = true
+        let active = document.querySelector('.levels .level.active')
+        if(active) active.classList.remove('active')
+        if(!same) e.target.classList.add('active')
+        let classes = Array.from(e.target.classList)
+        classes.splice(classes.indexOf('active'), 1)
+        classes.splice(classes.indexOf('level'), 1)
+        let difficulty = classes[0]
+
+        tracks.forEach(track => track.classList.remove('hide'))
+
+        if(same) return
+
+        Array.from(tracks).filter(track => !track.classList.contains(difficulty)).forEach(track => track.classList.add('hide'))
+    }))
+</script>
 {% endblock %}

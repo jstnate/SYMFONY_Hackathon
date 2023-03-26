@@ -64,6 +64,15 @@ class StationCrudController extends AbstractCrudController
                         'accept' => 'image/*'
                     ]
                 ]),
+            ImageField::new('image')
+                ->setBasePath('uploads/stations')
+                ->setUploadDir('public/uploads/stations')
+                ->setUploadedFileNamePattern('[slug]-[contenthash].[extension]')
+                ->setFormTypeOptions([
+                    'attr' => [
+                        'accept' => 'image/*'
+                    ]
+                ]),
         ];
     }
 }

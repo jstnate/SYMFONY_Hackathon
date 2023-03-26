@@ -1,7 +1,90 @@
-main {
-  padding: 10%;
+body > div.station {
+  position: relative;
+  margin-bottom: 112px;
+
+  img {
+    width: 100%;
+    height: 75vh;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .overlay {
+    background: rgba(78, 0, 0, 0.15);;
+    position: absolute;
+    inset: 0;
+    height: 75vh;
+  }
+
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    h2 {
+      color: #FFFFFF;
+      font-family: Gelasio;
+      font-size: 48px;
+      margin-bottom: 64px;
+      text-align: center;
+    }
+
+    p {
+      color: #FFFFFF;
+      font-family: "Comic Neue";
+      font-size: 32px;
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+}
+
+main.station {
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-family: Oswald;
+    font-weight: 700;
+    color: #4E0000;
+    background: #FFFFFF;
+    padding: 1rem 72px;
+    margin-bottom: 112px;
+    position: relative;
+    width: fit-content;
+
+    &:before {
+      content: '';
+      width: 50%;
+      height: 60%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #4E0000;
+      transform: translate(-4px, -4px);
+      z-index: -1;
+    }
+
+    &:after {
+      content: '';
+      width: 50%;
+      height: 60%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: #4E0000;
+      transform: translate(4px, 4px);
+      z-index: -1;
+    }
+  }
 
   .stations {
+    margin-bottom: 112px;
     .station {
       width: 100%;
       height: 17.75rem;
@@ -11,7 +94,7 @@ main {
       box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
       margin-bottom: 48px;
 
-      @media screen and (max-height: 768px) {
+      @media screen and (max-width: 768px) {
         height: auto;
       }
 
@@ -24,7 +107,7 @@ main {
         aspect-ratio: 384 / 286;
         position: relative;
 
-        @media screen and (max-height: 768px) {
+        @media screen and (max-width: 768px) {
           display: none;
         }
 
@@ -50,11 +133,12 @@ main {
 
       .station__main {
         padding: 2rem 4rem 2rem 2rem;
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        @media screen and (max-height: 768px) {
+        @media screen and (max-width: 768px) {
           flex-direction: column-reverse;
           padding: 2rem;
         }
@@ -64,7 +148,7 @@ main {
           height: 100%;
           margin-right: 5%;
 
-          @media screen and (max-height: 768px) {
+          @media screen and (max-width: 768px) {
             margin-right: 0;
           }
 
@@ -73,7 +157,7 @@ main {
             font-family: Gelasio;
             font-size: 28px;
 
-            @media screen and (max-height: 768px) {
+            @media screen and (max-width: 768px) {
               text-align: center;
             }
 
@@ -98,7 +182,7 @@ main {
         .station__logo {
           width: 25%;
 
-          @media screen and (max-height: 768px) {
+          @media screen and (max-width: 768px) {
             width: 50%;
           }
         }
