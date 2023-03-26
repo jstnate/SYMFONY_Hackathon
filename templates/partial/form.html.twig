@@ -1,6 +1,13 @@
-{{ form_start(reviewForm) }}
-    {{ form_row(reviewForm.lastName) }}
-    {{ form_row(reviewForm.firstName) }}
-    {{ form_row(reviewForm.review) }}
-    <button type="submit">Send</button>
-{{ form_end(reviewForm) }}
+<div class="form">
+    {{ form_start(reviewForm) }}
+        <div class="names">
+                {{ form_row(reviewForm.lastName) }}
+                {{ form_row(reviewForm.firstName) }}
+        </div>
+        <div class="textavis">
+                {{ form_row(reviewForm.review) }}
+        </div>
+
+        <button type="submit">Publier</button>
+    {{ form_end(reviewForm) }}
+</div>
