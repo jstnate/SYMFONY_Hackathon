@@ -64,7 +64,7 @@ footer {
 
     }
 
-    .back-to-top {
+    .up {
       height: 60px;
       width: 60px;
       display: flex;
@@ -75,6 +75,10 @@ footer {
       color: #4E0000;
       border-radius: 50px;
       transition: all 1s;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 

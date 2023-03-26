@@ -1235,7 +1235,7 @@ footer .infos .lien a::after, footer .infos .propos a::after {
 footer .infos .lien a:hover::after, footer .infos .propos a:hover::after {
   width: 100%;
 }
-footer .infos .back-to-top {
+footer .infos .up {
   height: 60px;
   width: 60px;
   display: flex;
@@ -1246,6 +1246,9 @@ footer .infos .back-to-top {
   color: #4E0000;
   border-radius: 50px;
   transition: all 1s;
+}
+footer .infos .up:hover {
+  cursor: pointer;
 }
 footer p, footer a {
   font-size: 20px;
