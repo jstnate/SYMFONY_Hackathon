@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Les Stations de France{% endblock %}
+{% block title %}Les Stations de Rhône-Alpes{% endblock %}
 
 {% block body %}
     {% include 'partial/header.html.twig' %}
@@ -9,12 +9,12 @@
         <div class="overlay"></div>
         <div class="content">
             <h2>Trouvez la station de ski de vos rêves</h2>
-            <p>Retrouvez toutes les informations des stations et domaines skiables de France, accessible en quelques cliques.</p>
+            <p>Retrouvez toutes les informations des stations et domaines skiables de la région Rhône-Alpes, accessible en quelques cliques.</p>
         </div>
     </div>
     <main class="station">
 
-        <h1>Les stations de france</h1>
+        <h1>Les stations de la région Rhône-Alpes</h1>
 
         <ul class="stations">
             {% for station in stations %}
