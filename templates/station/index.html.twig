@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Stations de Frande{% endblock %}
+
+{% block body %}
+    <div class="station">
+        <img src="{{ asset('stations_top.png', 'source') }}" alt="">
+        <div class="overlay"></div>
+        <div class="content">
+            <h2>Trouvez la station de ski de vos rêves</h2>
+            <p>Retrouvez toutes les informations des stations et domaines skiables de France, accessible en quelques cliques.</p>
+        </div>
+    </div>
+    <main class="station">
+
+        <h1>Les stations de france</h1>
+
+        <ul class="stations">
+            {% for station in stations %}
+                {% for station in stations %}
+                    {% set logo = station.logo is null ? 'station-logo-default.png' : station.logo %}
+                    {% set description = station.description is null ? 'Cette station ne possède pas encore de présentation' : station.description %}
+                    {% set domain = station.domain is null ? '' : station.domain  %}
+                    {% include 'cards/station-card.html.twig' with {
+                        name: station.name,
+                        domain: domain,
+                        description: description,
+                        logo: logo,
+                        url : path('app_station_show', {'id': station.id})
+                    } %}
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </main>
+{% endblock %}

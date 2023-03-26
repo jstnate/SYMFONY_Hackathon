@@ -1,7 +1,84 @@
-main {
-  padding: 10%;
+body > div.station {
+  position: relative;
+  margin-bottom: 112px;
 }
-main .stations .station {
+body > div.station img {
+  width: 100%;
+  height: 75vh;
+  object-fit: cover;
+  object-position: center;
+}
+body > div.station .overlay {
+  background: rgba(78, 0, 0, 0.15);
+  position: absolute;
+  inset: 0;
+  height: 75vh;
+}
+body > div.station .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+body > div.station .content h2 {
+  color: #FFFFFF;
+  font-family: "Gelasio", serif;
+  font-size: 48px;
+  margin-bottom: 64px;
+  text-align: center;
+}
+body > div.station .content p {
+  color: #FFFFFF;
+  font-family: "Comic Neue", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+}
+
+main.station {
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main.station h1 {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  color: #4E0000;
+  background: #FFFFFF;
+  padding: 1rem 72px;
+  margin-bottom: 112px;
+  position: relative;
+  width: fit-content;
+}
+main.station h1:before {
+  content: "";
+  width: 50%;
+  height: 60%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #4E0000;
+  transform: translate(-4px, -4px);
+  z-index: -1;
+}
+main.station h1:after {
+  content: "";
+  width: 50%;
+  height: 60%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #4E0000;
+  transform: translate(4px, 4px);
+  z-index: -1;
+}
+main.station .stations {
+  margin-bottom: 112px;
+  width: 100%;
+}
+main.station .stations .station {
   width: 100%;
   height: 17.75rem;
   display: flex;
@@ -10,32 +87,32 @@ main .stations .station {
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
   margin-bottom: 48px;
 }
-@media screen and (max-height: 768px) {
-  main .stations .station {
+@media screen and (max-width: 768px) {
+  main.station .stations .station {
     height: auto;
   }
 }
-main .stations .station:last-child {
-  margin-bottom: 0px;
+main.station .stations .station:last-child {
+  margin-bottom: 0;
 }
-main .stations .station .station__view {
+main.station .stations .station .station__view {
   height: 100%;
   aspect-ratio: 384/286;
   position: relative;
 }
-@media screen and (max-height: 768px) {
-  main .stations .station .station__view {
+@media screen and (max-width: 768px) {
+  main.station .stations .station .station__view {
     display: none;
   }
 }
-main .stations .station .station__view img {
+main.station .stations .station .station__view img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   border-radius: 10px;
 }
-main .stations .station .station__view h4 {
+main.station .stations .station .station__view h4 {
   display: grid;
   place-items: center;
   background: rgba(78, 0, 0, 0.1882352941);
@@ -45,55 +122,56 @@ main .stations .station .station__view h4 {
   font-size: 40px;
   color: #FFFFFF;
 }
-main .stations .station .station__main {
+main.station .stations .station .station__main {
   padding: 2rem 4rem 2rem 2rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-@media screen and (max-height: 768px) {
-  main .stations .station .station__main {
+@media screen and (max-width: 768px) {
+  main.station .stations .station .station__main {
     flex-direction: column-reverse;
     padding: 2rem;
   }
 }
-main .stations .station .station__main .station__content {
+main.station .stations .station .station__main .station__content {
   width: 70%;
   height: 100%;
   margin-right: 5%;
 }
-@media screen and (max-height: 768px) {
-  main .stations .station .station__main .station__content {
+@media screen and (max-width: 768px) {
+  main.station .stations .station .station__main .station__content {
     margin-right: 0;
   }
 }
-main .stations .station .station__main .station__content h4 {
+main.station .stations .station .station__main .station__content h4 {
   margin-bottom: 1rem;
-  font-family: Gelasio;
+  font-family: "Gelasio", serif;
   font-size: 28px;
 }
-@media screen and (max-height: 768px) {
-  main .stations .station .station__main .station__content h4 {
+@media screen and (max-width: 768px) {
+  main.station .stations .station .station__main .station__content h4 {
     text-align: center;
   }
 }
-main .stations .station .station__main .station__content h4 a {
+main.station .stations .station .station__main .station__content h4 a {
   color: #4E0000;
 }
-main .stations .station .station__main .station__content h4 span {
+main.station .stations .station .station__main .station__content h4 span {
   font-size: 16px;
 }
-main .stations .station .station__main .station__content h4:hover {
+main.station .stations .station .station__main .station__content h4:hover {
   text-decoration: underline #4E0000;
 }
-main .stations .station .station__main .station__content p {
-  font-family: Comic Neue;
+main.station .stations .station .station__main .station__content p {
+  font-family: "Comic Neue", sans-serif;
 }
-main .stations .station .station__main .station__logo {
+main.station .stations .station .station__main .station__logo {
   width: 25%;
 }
-@media screen and (max-height: 768px) {
-  main .stations .station .station__main .station__logo {
+@media screen and (max-width: 768px) {
+  main.station .stations .station .station__main .station__logo {
     width: 50%;
   }
 }

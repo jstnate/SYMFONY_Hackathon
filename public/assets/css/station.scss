@@ -1,0 +1,194 @@
+body > div.station {
+  position: relative;
+  margin-bottom: 112px;
+
+  img {
+    width: 100%;
+    height: 75vh;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .overlay {
+    background: rgba(78, 0, 0, 0.15);;
+    position: absolute;
+    inset: 0;
+    height: 75vh;
+  }
+
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    h2 {
+      color: #FFFFFF;
+      font-family: 'Gelasio', serif;
+      font-size: 48px;
+      margin-bottom: 64px;
+      text-align: center;
+    }
+
+    p {
+      color: #FFFFFF;
+      font-family: "Comic Neue", sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+}
+
+main.station {
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    color: #4E0000;
+    background: #FFFFFF;
+    padding: 1rem 72px;
+    margin-bottom: 112px;
+    position: relative;
+    width: fit-content;
+
+    &:before {
+      content: '';
+      width: 50%;
+      height: 60%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #4E0000;
+      transform: translate(-4px, -4px);
+      z-index: -1;
+    }
+
+    &:after {
+      content: '';
+      width: 50%;
+      height: 60%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: #4E0000;
+      transform: translate(4px, 4px);
+      z-index: -1;
+    }
+  }
+
+  .stations {
+    margin-bottom: 112px;
+    width: 100%;
+
+    .station {
+      width: 100%;
+      height: 17.75rem;
+      display: flex;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 48px;
+
+      @media screen and (max-width: 768px) {
+        height: auto;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .station__view {
+        height: 100%;
+        aspect-ratio: 384 / 286;
+        position: relative;
+
+        @media screen and (max-width: 768px) {
+          display: none;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          border-radius: 10px;
+        }
+
+        h4 {
+          display: grid;
+          place-items: center;
+          background: #4E000030;
+          position: absolute;
+          inset: 0;
+          font-weight: 700;
+          font-size: 40px;
+          color: #FFFFFF;
+        }
+      }
+
+      .station__main {
+        padding: 2rem 4rem 2rem 2rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media screen and (max-width: 768px) {
+          flex-direction: column-reverse;
+          padding: 2rem;
+        }
+
+        .station__content {
+          width: 70%;
+          height: 100%;
+          margin-right: 5%;
+
+          @media screen and (max-width: 768px) {
+            margin-right: 0;
+          }
+
+          h4 {
+            margin-bottom: 1rem;
+            font-family: 'Gelasio', serif;
+            font-size: 28px;
+
+            @media screen and (max-width: 768px) {
+              text-align: center;
+            }
+
+            a {
+              color: #4E0000;
+            }
+
+            span {
+              font-size: 16px;
+            }
+
+            &:hover {
+              text-decoration: underline #4E0000;
+            }
+          }
+
+          p {
+            font-family: 'Comic Neue', sans-serif;
+          }
+        }
+
+        .station__logo {
+          width: 25%;
+
+          @media screen and (max-width: 768px) {
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+}

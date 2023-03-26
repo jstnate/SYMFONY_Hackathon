@@ -1,0 +1,272 @@
+div.station-single {
+  position: relative;
+  margin-bottom: 112px;
+
+  img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .overlay {
+    background: linear-gradient(0deg, rgba(22, 22, 22, 0.7) 0%, rgba(22, 22, 22, 0.7) 27.6%, rgba(22, 22, 22, 0) 100%);
+    position: absolute;
+    inset: 0;
+    height: 50vh;
+  }
+
+  h2 {
+    font-family: Gelasio;
+    font-size: 48px;
+    position: absolute;
+    left: 54px;
+    bottom: 36px;
+    color: white;
+  }
+}
+
+main.station-single {
+  padding: 0 10%;
+
+  .station__infos {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+
+    h1 {
+      font-family: Gelasio;
+      font-size: 64px;
+      color: #4E0000;
+    }
+  }
+
+  .station__description {
+    font-size: 28px;
+    font-family: "Comic Neue";
+    margin-bottom: 96px;
+  }
+
+  .levels {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 48px;
+
+    .level {
+      padding: 1rem 3rem;
+      color: #FFFFFF;
+      font-family: Pacifico;
+      font-size: 24px;
+      background: #4E0000;
+      border-radius: 10px;
+      cursor: pointer;
+      border: solid 4px #4E0000;
+
+      &.active {
+        background: #FFFFFF;
+        color: #4E0000;
+      }
+    }
+  }
+
+  .select {
+    width: 100%;
+    height: 72px;
+    display: flex;
+    position: relative;
+
+    &:before {
+      content: '';
+      width: 50%;
+      height: 4px;
+      background: #4E0000;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition: 0.5s;
+    }
+
+    &.toggled:before {
+      transform: translate(100%);
+    }
+
+    h3 {
+      height: 100%;
+      width: 100%;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-family: Gelasio;
+      font-size: 36px;
+    }
+  }
+
+  .tab {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .lists {
+    width: 200%;
+    display: flex;
+    transition: 0.5s;
+    margin-bottom: 112px;
+
+    &.toggled {
+      transform: translate(-50%);
+    }
+  }
+
+  .tracks {
+    width: 50%;
+
+    .track {
+      position: relative;
+      height: 72px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-family: Oswald;
+
+      &.hide {
+        display: none;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #000000;
+      }
+
+      &:last-child:before {
+        content: none;
+      }
+
+      & > div {
+        display: flex;
+        align-items: center;
+        width: calc(100% / 3);
+
+        .track__color {
+          height: 2rem;
+          aspect-ratio: 1/1;
+          margin-right: 0.5rem;
+        }
+
+        .track__name {
+          font-family: Oswald;
+          font-size: 36px;
+          white-space: nowrap;
+        }
+
+        &.status {
+          justify-content: center;
+          font-family: sans-serif;
+          font-size: 24px;
+          font-weight: 600;
+          white-space: nowrap;
+        }
+
+        &.timers {
+          justify-content: end;
+          gap: 1rem;
+          font-family: sans-serif;
+          font-size: 24px;
+          font-weight: 600;
+
+          span {
+            color: #0E730E;
+            &:last-child {
+              color: #FF0E0E;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .lifts {
+    width: 50%;
+
+    .lift {
+      position: relative;
+      height: 72px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-family: Oswald;
+
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #000000;
+      }
+
+      &:last-child:before {
+        content: none;
+      }
+
+      & > div {
+        display: flex;
+        align-items: center;
+        width: calc(100% / 3);
+      }
+
+      .info {
+        img {
+          height: 2rem;
+          object-fit: contain;
+          aspect-ratio: 1/1;
+          margin-right: 0.5rem;
+        }
+
+        .lift__name {
+          font-family: Oswald;
+          font-size: 36px;
+          white-space: nowrap;
+        }
+      }
+
+      .status {
+        justify-content: center;
+        font-family: sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+
+        & > div {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.25rem;
+        }
+      }
+
+      .timers {
+        justify-content: end;
+        gap: 1rem;
+        font-family: sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+
+        span {
+          color: #0E730E;
+
+          &:last-child {
+            color: #FF0E0E;
+          }
+        }
+      }
+    }
+  }
+}
