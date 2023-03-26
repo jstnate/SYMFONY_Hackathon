@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Les Stations de Frande{% endblock %}
+{% block title %}Les Stations de France{% endblock %}
 
 {% block body %}
+    {% include 'partial/header.html.twig' %}
     <div class="station">
         <img src="{{ asset('stations_top.png', 'source') }}" alt="">
         <div class="overlay"></div>
@@ -32,4 +33,5 @@
             {% endfor %}
         </ul>
     </main>
+    {% include 'partial/header.html.twig' %}
 {% endblock %}

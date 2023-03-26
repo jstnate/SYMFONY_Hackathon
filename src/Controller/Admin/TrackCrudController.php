@@ -50,15 +50,16 @@ class TrackCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
+            TextField::new('name'),
             TimeField::new('opening'),
             TimeField::new('closing'),
             BooleanField::new('forced_closure'),
             TextField::new('message'),
             AssociationField::new('station'),
-            AssociationField::new('difficulty'),
+            AssociationField::new('difficulty')->hideOnIndex(),
             AssociationField::new('level')->hideOnIndex(),
             AssociationField::new('material')->hideOnIndex(),
-            AssociationField::new('clutter')
+            AssociationField::new('clutter')->hideOnIndex()
         ];
     }
 }

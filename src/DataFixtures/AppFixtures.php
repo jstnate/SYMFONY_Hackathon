@@ -105,6 +105,7 @@ class AppFixtures extends Fixture
             $track->setLevel($levels[random_int(0, count($levels) - 1)]);
             $track->setDifficulty($difficulties[random_int(0, count($difficulties) - 1)]);
             $track->setMaterial($materials[random_int(0, count($materials) - 1)]);
+            $track->setName('Track n°' . $i);
             $manager->persist($track);
         }
 
@@ -115,6 +116,7 @@ class AppFixtures extends Fixture
             $lift->setOpening(DateTime::createFromFormat('H:i', $openingTime));
             $lift->setClutter($clutters[random_int(0, count($clutters) - 1)]);
             $lift->setType($types[random_int(0, count($types) - 1)]);
+            $lift->setName('Lift n°' . $i);
             $manager->persist($lift);
         }
 

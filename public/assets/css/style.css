@@ -465,8 +465,8 @@ body > div.station .content p {
 }
 
 main.station {
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -640,14 +640,23 @@ main.station-single .station__infos {
   justify-content: space-between;
   margin-bottom: 48px;
 }
+main.station-single .station__infos .station__text {
+  width: 80%;
+}
+main.station-single .station__infos .station__logo {
+  width: 300px;
+  height: 200px;
+  object-fit: contain;
+}
 main.station-single .station__infos h1 {
-  font-family: Gelasio;
+  font-family: "Gelasio", serif;
   font-size: 64px;
+  margin: 0 0 50px;
   color: #4E0000;
 }
 main.station-single .station__description {
   font-size: 28px;
-  font-family: "Comic Neue";
+  font-family: "Comic Neue", sans-serif;
   margin-bottom: 96px;
 }
 main.station-single .levels {
@@ -657,9 +666,9 @@ main.station-single .levels {
   margin-bottom: 48px;
 }
 main.station-single .levels .level {
-  padding: 1rem 3rem;
+  padding: 1rem 2rem;
   color: #FFFFFF;
-  font-family: Pacifico;
+  font-family: "Oswald", sans-serif;
   font-size: 24px;
   background: #4E0000;
   border-radius: 10px;
@@ -713,6 +722,7 @@ main.station-single .lists.toggled {
 }
 main.station-single .tracks {
   width: 50%;
+  font-size: 16px;
 }
 main.station-single .tracks .track {
   position: relative;
@@ -740,7 +750,7 @@ main.station-single .tracks .track:last-child:before {
 main.station-single .tracks .track > div {
   display: flex;
   align-items: center;
-  width: 33.3333333333%;
+  width: 25%;
 }
 main.station-single .tracks .track > div .track__color {
   height: 2rem;
@@ -749,21 +759,26 @@ main.station-single .tracks .track > div .track__color {
 }
 main.station-single .tracks .track > div .track__name {
   font-family: Oswald;
-  font-size: 36px;
+  font-size: 20px;
   white-space: nowrap;
 }
 main.station-single .tracks .track > div.status {
   justify-content: center;
   font-family: sans-serif;
-  font-size: 24px;
   font-weight: 600;
   white-space: nowrap;
+}
+main.station-single .tracks .track > div.clutter {
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 main.station-single .tracks .track > div.timers {
   justify-content: end;
   gap: 1rem;
   font-family: sans-serif;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 600;
 }
 main.station-single .tracks .track > div.timers span {
@@ -798,7 +813,7 @@ main.station-single .lifts .lift:last-child:before {
 main.station-single .lifts .lift > div {
   display: flex;
   align-items: center;
-  width: 33.3333333333%;
+  width: 25%;
 }
 main.station-single .lifts .lift .info img {
   height: 2rem;
@@ -808,13 +823,13 @@ main.station-single .lifts .lift .info img {
 }
 main.station-single .lifts .lift .info .lift__name {
   font-family: Oswald;
-  font-size: 36px;
+  font-size: 24px;
   white-space: nowrap;
 }
 main.station-single .lifts .lift .status {
   justify-content: center;
   font-family: sans-serif;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 600;
 }
 main.station-single .lifts .lift .status > div {
@@ -823,11 +838,17 @@ main.station-single .lifts .lift .status > div {
   justify-content: center;
   gap: 0.25rem;
 }
+main.station-single .lifts .lift.clutter {
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 main.station-single .lifts .lift .timers {
   justify-content: end;
   gap: 1rem;
   font-family: sans-serif;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 600;
 }
 main.station-single .lifts .lift .timers span {

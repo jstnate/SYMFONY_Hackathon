@@ -34,6 +34,9 @@ class Station
     #[ORM\OneToMany(mappedBy: 'station', targetEntity: Lift::class)]
     private Collection $lifts;
 
+    #[ORM\Column(length: 511, nullable: true)]
+    private ?string $image = null;
+
     public function __construct()
     {
         $this->tracks = new ArrayCollection();
@@ -192,5 +195,17 @@ class Station
     public function __toString(): string
     {
         return $this->name;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
     }
 }

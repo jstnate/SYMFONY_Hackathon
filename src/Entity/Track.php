@@ -41,6 +41,9 @@ class Track
     #[ORM\ManyToOne(inversedBy: 'tracks')]
     private ?Station $station = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -150,6 +153,18 @@ class Track
     public function setStation(?Station $station): self
     {
         $this->station = $station;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
